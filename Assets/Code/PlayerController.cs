@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float gravity = 1f;
-    [SerializeField] private float lookSpeed = 2f;
+    [SerializeField] private float lookSpeed = 400f;
     [SerializeField] private float lookXLimit = 45f;
 
     private float rotationX = 0;
@@ -43,18 +43,21 @@ public class PlayerController : MonoBehaviour
 
         float curSpeedX = Input.GetAxis("Vertical");
         float curSpeedY = Input.GetAxis("Horizontal");
-        float movementDirectionY = _direction.y;
+        //float movementDirectionY = _direction.y;
         _direction = (forward * curSpeedX) + (right * curSpeedY);
 
         
         #region rotation
-        rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
+        rotationX += -Input.GetAxis("Mouse Y") * lookSpeed * Time.deltaTime;
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-        transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
+        transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed * Time.deltaTime, 0);
         #endregion
-        
-        _direction.Normalize();
+
+        if (_direction.magnitude > 1)
+        {
+            _direction.Normalize();    
+        }
         _controller.Move(_direction * (speed * Time.deltaTime));
     }
 }
