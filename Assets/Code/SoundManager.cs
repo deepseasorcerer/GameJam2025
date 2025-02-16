@@ -68,6 +68,7 @@ public class SoundManager : MonoBehaviour
             if (sounds[i].name == soundName)
             {
                 sounds[i].Play();
+                
                 return;
             }
         }
