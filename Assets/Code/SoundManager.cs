@@ -63,11 +63,13 @@ public class SoundManager : MonoBehaviour
     
     public void PlaySound(string soundName)
     {
+        Console.WriteLine("SoundManager: Playing sound " + soundName);
         for (int i = 0; i < sounds.Length; i++)
         {
             if (sounds[i].name == soundName)
             {
                 sounds[i].Play();
+                
                 return;
             }
         }

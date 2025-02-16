@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: 
-    clip: {fileID: 0}
-    volume: 0
+  - name: Door
+    clip: {fileID: 8300000, guid: 86d60441270ec2046bc87fec546bb4ab, type: 3}
+    volume: 0.295
     loop: 0
     pitch: 0
     volumeRandomness: 0
