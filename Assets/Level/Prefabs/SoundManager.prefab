@@ -47,8 +47,15 @@ MonoBehaviour:
   sounds:
   - name: Door
     clip: {fileID: 8300000, guid: 86d60441270ec2046bc87fec546bb4ab, type: 3}
-    volume: 0.295
+    volume: 0.726
     loop: 0
-    pitch: 0
+    pitch: 1
+    volumeRandomness: 0
+    pitchRandomness: 0
+  - name: Electric
+    clip: {fileID: 8300000, guid: d72525f82a948df47902d27124c30a22, type: 3}
+    volume: 0.726
+    loop: 0
+    pitch: 1.007
     volumeRandomness: 0
     pitchRandomness: 0
