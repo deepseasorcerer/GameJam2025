@@ -13,11 +13,13 @@ public class DoorController : MonoBehaviour
     private GameObject leftDoor;
     private GameObject rightDoor;
     private bool _moving = false;
+    private Vector3 startRotation;
     
-    private SoundManager _soundManager ;
+    private SoundManager _soundManager;
     
     private void Awake()
     {
+        startRotation = transform.eulerAngles;
         leftDoor = transform.GetChild(1).gameObject;
         rightDoor = transform.GetChild(0).gameObject;
         leftDoorStartPos = leftDoor.transform.position;
@@ -54,17 +56,16 @@ public class DoorController : MonoBehaviour
     {
         MoveDoor();
     }
-    
+
     void MoveDoor()
     {
-        var rightGoalPosition = playerIsNear ? rightDoorStartPos+ Vector3.right * doorOffset : rightDoorStartPos;
-        var leftGoalPosition = playerIsNear ? leftDoorStartPos + Vector3.left * doorOffset : leftDoorStartPos;
+        var rightGoalPosition = playerIsNear ? rightDoorStartPos + rightDoor.transform.right * doorOffset : rightDoorStartPos;
+        var leftGoalPosition = playerIsNear ? leftDoorStartPos + leftDoor.transform.right * -doorOffset : leftDoorStartPos;
         float distanceRight = Vector3.Distance(rightDoor.transform.position, rightGoalPosition);
         if(distanceRight > 0.01f)
         {
             rightDoor.transform.position = Vector3.Lerp(rightDoor.transform.position, rightGoalPosition, doorSpeed * Time.deltaTime);
             leftDoor.transform.position = Vector3.Lerp(leftDoor.transform.position, leftGoalPosition, doorSpeed * Time.deltaTime);
-            
         }
     }
 }

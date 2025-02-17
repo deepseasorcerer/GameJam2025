@@ -27,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5758551020218066073}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.005373138, y: 0.0066943457, z: 0.0015777077, w: 0.9999619}
-  m_LocalPosition: {x: -0.63, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.64, y: 0, z: 0}
   m_LocalScale: {x: 1.260981, y: 3.1700964, z: 0.20683}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5617268382529084078}
-  m_LocalEulerAnglesHint: {x: -0.617, y: 0.766, z: 0.177}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5723805283251410060
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -190,7 +190,6 @@ GameObject:
   - component: {fileID: 4582979263075359943}
   - component: {fileID: 7537955765411019057}
   - component: {fileID: 6773753093770836783}
-  - component: {fileID: 997571037553141784}
   m_Layer: 0
   m_Name: LeftSide
   m_TagString: Untagged
@@ -206,13 +205,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7755911626278066168}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.005373138, y: 0.0066943457, z: 0.0015777077, w: 0.9999619}
-  m_LocalPosition: {x: 0.63, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.64, y: 0, z: 0}
   m_LocalScale: {x: 1.260981, y: 3.1700964, z: 0.20683}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5617268382529084078}
-  m_LocalEulerAnglesHint: {x: -0.617, y: 0.766, z: 0.177}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4582979263075359943
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -287,25 +286,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!95 &997571037553141784
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7755911626278066168}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6a1a4059522fe8941869bec1a9f2cd94, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
