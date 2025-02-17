@@ -58,8 +58,8 @@ public class DoorController : MonoBehaviour
 
     void MoveDoor()
     {
-        var rightGoalPosition = playerIsNear ? rightDoorStartPos + rightDoor.transform.up * -doorOffset : rightDoorStartPos;
-        var leftGoalPosition = playerIsNear ? leftDoorStartPos + leftDoor.transform.up * doorOffset : leftDoorStartPos;
+        var rightGoalPosition = playerIsNear ? rightDoorStartPos + rightDoor.transform.right * doorOffset : rightDoorStartPos;
+        var leftGoalPosition = playerIsNear ? leftDoorStartPos + leftDoor.transform.right * -doorOffset : leftDoorStartPos;
         float distanceRight = Vector3.Distance(rightDoor.transform.position, rightGoalPosition);
         if(distanceRight > 0.01f)
         {
