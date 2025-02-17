@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-[System.Serializable]
+[Serializable]
 public class Sound
 {
     public string name;
