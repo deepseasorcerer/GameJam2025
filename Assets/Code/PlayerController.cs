@@ -23,7 +23,12 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         playerCamera = Camera.main;
+
+        // Load mouse sensitivity
+        lookSpeed = PlayerPrefs.GetFloat("MouseSensitivity", 5f) * 80f; // Scale for better control
+        Debug.Log($"Mouse Sensitivity Applied: {lookSpeed}");
     }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
