@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public abstract class InteractableBase : MonoBehaviour, IInteractable
 {
@@ -9,14 +11,19 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
 
     protected bool isInteracting;
     private float interactionTimer;
+    [SerializeField] private List<Item> requiredItems;
 
     public void Interact()
     {
+        if (!CheckRequiredItems())
+        {
+            return;
+        }
+
         if (!isInteracting)
         {
             isInteracting = true;
-            interactionTimer = 0f;
-
+            interactionTimer = 0f;           
             if (interactionType == InteractionType.Instant)
             {
                 PerformInteraction();
@@ -49,6 +56,18 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
             PerformInteraction();
         }
         isInteracting = false;
+    }
+
+    private bool CheckRequiredItems()
+    {
+        bool allItemsPresent = requiredItems.All(item => PlayerInventory.Instance.GetInventoryItemList().Contains(item));
+        if(allItemsPresent)
+        {
+            Debug.Log("ItemPresent");
+            return true;
+        }
+        Debug.Log("ItemNotPresent");
+        return false;
     }
 
     protected abstract void PerformInteraction();
