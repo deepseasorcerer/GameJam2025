@@ -8,6 +8,10 @@ public class PlayerInventory : MonoBehaviour
 
     [SerializeField] private List<Item> itemsInInventory;
 
+    private Item currentItem;
+    private int currentIndex;
+
+
     private void Awake()
     {
         if (Instance != null)
@@ -17,6 +21,37 @@ public class PlayerInventory : MonoBehaviour
             return;
         }
         Instance = this;
+    }
+
+    private void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            CycleInventory();
+        }
+
+    }
+
+    private void CycleInventory()
+    {
+        currentIndex++;
+        if(currentIndex >= itemsInInventory.Count)
+        {
+            currentIndex = 0;
+        }
+        else
+        {
+            Debug.Log("Empty Inventory");
+        }
+
+        SetCurrentItem();
+
+    }
+
+    private void SetCurrentItem()
+    {
+        currentItem = itemsInInventory[currentIndex];
     }
 
 
