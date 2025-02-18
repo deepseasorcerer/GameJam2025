@@ -17,8 +17,6 @@ public class DoorController : MonoBehaviour
     
     private void Awake()
     {
-        var doors = transform.childCount;
-        Debug.Log(doors);
         leftDoor = transform.GetChild(1).gameObject;
         rightDoor = transform.GetChild(0).gameObject;
         leftDoorStartPos = leftDoor.transform.position;

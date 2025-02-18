@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameEvent[] gameEvents; 
+    public GameObject[] gameEvents;
     public static GameManager Instance;
+    private float timeSinceLastEvent = 0;
     
     private void Awake()
     {
@@ -19,20 +20,26 @@ public class GameManager : MonoBehaviour
     
     private void Start()
     {
+        
     }
     
     void Update()
     {
-        
+        timeSinceLastEvent += Time.deltaTime;
+        if(timeSinceLastEvent >= 4f)
+        {
+            timeSinceLastEvent = -1000000000f;
+            startEvent("AirLeak");
+        }
     }
 
     public void startEvent(string eventName)
     {
         foreach (var gameEvent in gameEvents)
         {
-            if (gameEvent.eventName == eventName)
+            if (gameEvent.name == eventName)
             {
-                gameEvent.isActive = true;
+                gameEvent.GetComponent<AirLeakEvent>().ActivateTask();
             }
         }
     }

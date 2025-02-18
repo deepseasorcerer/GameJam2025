@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameEvents:
-  - {fileID: 0}
+  - {fileID: 3357317113859909265, guid: 830a83db0223c864aa12411a128147da, type: 3}

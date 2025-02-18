@@ -48,9 +48,25 @@ public class PlayerController : MonoBehaviour
 
         float curSpeedX = Input.GetAxis("Vertical");
         float curSpeedY = Input.GetAxis("Horizontal");
-        //float movementDirectionY = _direction.y;
+        float movementDirectionY = _direction.y;
         _direction = (forward * curSpeedX) + (right * curSpeedY);
 
+        #region Handles Jumping
+        if (Input.GetButton("Jump") && _controller.isGrounded)
+        {
+            _direction.y = jumpForce;
+        }
+        else
+        {
+            _direction.y = movementDirectionY;
+        }
+ 
+        if (!_controller.isGrounded)
+        {
+            _direction.y -= gravity * Time.deltaTime;
+        }
+ 
+        #endregion
         
         #region rotation
         rotationX += -Input.GetAxis("Mouse Y") * lookSpeed * Time.deltaTime;
