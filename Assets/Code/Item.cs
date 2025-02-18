@@ -5,6 +5,7 @@ public class Item : MonoBehaviour
     [SerializeField]
     public string itemName;
 
+    public bool isInHands = false;
     public virtual void Use()
     {
         Debug.Log(itemName + " does nothing");

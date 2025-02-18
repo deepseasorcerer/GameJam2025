@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
+    [SerializeField] private float runSpeed = 8f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float gravity = 1f;
     [SerializeField] private float lookSpeed = 400f;
@@ -46,6 +47,7 @@ public class PlayerController : MonoBehaviour
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
 
+        var isRunning =  Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
         float curSpeedX = Input.GetAxis("Vertical");
         float curSpeedY = Input.GetAxis("Horizontal");
         float movementDirectionY = _direction.y;
@@ -79,6 +81,7 @@ public class PlayerController : MonoBehaviour
         {
             _direction.Normalize();    
         }
-        _controller.Move(_direction * (speed * Time.deltaTime));
+        
+        _controller.Move(_direction * ((isRunning ? runSpeed : speed) * Time.deltaTime));
     }
 }
