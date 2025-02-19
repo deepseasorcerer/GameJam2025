@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class SpaceTape : Item, IInteractable
+public class SpaceTape : Item
 {
     private Vector3 _originalPosition;
     private float _timeSinceMoved = 0f;
@@ -34,14 +34,4 @@ public class SpaceTape : Item, IInteractable
         }
     }
 
-    public void Interact()
-    {
-        Debug.Log("SpaceTape is being interacted with");
-        throw new System.NotImplementedException();
-    }
-
-    public void CancelInteraction()
-    {
-        throw new System.NotImplementedException();
-    }
 }

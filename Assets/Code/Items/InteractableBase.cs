@@ -9,31 +9,38 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
     public InteractionType interactionType = InteractionType.Instant;
     public float holdTime = 5f;
 
-    protected bool isInteracting;
+    protected bool isInteracting = false;
     private float interactionTimer;
-    [SerializeField] private List<Item> requiredItems;
+    [SerializeField] private Item requiredItem;
 
-    public void Interact()
+    [SerializeField] private float interactionCooldown = 0.1f;
+    private float lastInteractionTime = 0f;
+    public void Interact(Item usedItem = null)
     {
-        if (!CheckRequiredItems())
+        if (Time.time - lastInteractionTime < interactionCooldown)
         {
             return;
         }
 
-        if (!isInteracting)
+        lastInteractionTime = Time.time;
+
+        if (interactionType == InteractionType.Instant)
         {
-            isInteracting = true;
-            interactionTimer = 0f;           
-            if (interactionType == InteractionType.Instant)
-            {
-                PerformInteraction();
-                isInteracting = false;
-            }
-            else if (interactionType == InteractionType.Hold)
-            {
-                StartCoroutine(HoldInteraction());
-            }
+            PerformInteraction();
+            isInteracting = false;
         }
+        else if (interactionType == InteractionType.Hold)
+        {
+            Debug.Log("Start");
+            if (isInteracting)
+            {
+                return;
+            }
+            isInteracting = true;
+            StartCoroutine(HoldInteraction());
+
+        }
+
     }
 
     public void CancelInteraction()
@@ -41,12 +48,14 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
         isInteracting = false;
         StopAllCoroutines();
         OnInteractionCancelled();
+        interactionTimer = 0;
     }
 
     private IEnumerator HoldInteraction()
     {
         while (isInteracting && interactionTimer < holdTime)
         {
+            Debug.Log(interactionTimer);
             interactionTimer += Time.deltaTime;
             yield return null;
         }
@@ -54,14 +63,13 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
         if (isInteracting)
         {
             PerformInteraction();
+            interactionTimer = 0;
         }
-        isInteracting = false;
     }
 
-    private bool CheckRequiredItems()
+    private bool CheckRequiredItems(Item item)
     {
-        bool allItemsPresent = requiredItems.All(item => PlayerInventory.Instance.GetInventoryItemList().Contains(item));
-        if(allItemsPresent)
+        if (requiredItem = item)
         {
             Debug.Log("ItemPresent");
             return true;

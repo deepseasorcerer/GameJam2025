@@ -10,4 +10,9 @@ public class Item : MonoBehaviour
     {
         Debug.Log(itemName + " does nothing");
     }
+
+    public virtual void Destroy()
+    {
+        this.Destroy();
+    }
 }

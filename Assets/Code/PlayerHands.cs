@@ -1,22 +1,25 @@
+using NUnit.Framework;
 using UnityEngine;
 
 public class PlayerHands : MonoBehaviour
 {
-    public Item RightHandItem;
-    public Item LeftHandItem;
+    [SerializeField] public Item rightHandItem;
+    [SerializeField] public Item leftHandItem;
     [SerializeField] private Transform rightHand;
     [SerializeField] private Transform leftHand;
     [SerializeField] private float pickupRange = 2f;
     [SerializeField] bool canUseRightHand = true;
     [SerializeField] float timeBetweenInteractions = 1f;
 
-    
+    private InteractableBase currentHoldInteractable;
+
     private Rigidbody rightRb;
     private Rigidbody leftRb;
-    private float timeSinceInteraction = 0f; 
-    
+    private float timeSinceInteraction = 0f;
+    private KeyCode currentHoldKey;
+
     private Camera mainCamera;
-    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,103 +30,155 @@ public class PlayerHands : MonoBehaviour
     void Update()
     {
         timeSinceInteraction += Time.deltaTime;
-        if(Input.GetMouseButton(0))
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             ProcessLeftClick();
         }
-        if(Input.GetMouseButton(1) && canUseRightHand)
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             ProcessRightClick();
         }
-        if (LeftHandItem != null)
+
+        CheckHoldInteraction();
+
+        if(Input.GetKeyDown(KeyCode.Q))
         {
-            LeftHandItem.transform.position = leftHand.position;
-            LeftHandItem.transform.rotation = leftHand.rotation;
+            DropItem(ref leftHandItem);
         }
-        if (RightHandItem != null)
+
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            RightHandItem.transform.position = rightHand.position;
-            RightHandItem.transform.rotation = rightHand.rotation;
+            DropItem(ref rightHandItem);
         }
+        
+
+
     }
 
     private void ProcessLeftClick()
     {
-        if(LeftHandItem != null && timeSinceInteraction >= timeBetweenInteractions)
-        {
-            DropLeftHandItem();
-        }
-            
-        Debug.DrawRay(mainCamera.transform.position, mainCamera.transform.forward * pickupRange, Color.red, pickupRange);
-            
-        Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        RaycastHit hit;
-        if(Physics.Raycast(ray, out hit, pickupRange) && timeSinceInteraction >= timeBetweenInteractions)
-        {
-            var hitObject = hit.collider.GetComponent<Item>();
-            if (hitObject != null)
-            {
-                hitObject.isInHands = true;
-                timeSinceInteraction = 0f;
-                Item itemHit = hitObject;
-                Debug.Log("picked up " + itemHit.name);    
-                LeftHandItem = itemHit;
-                leftRb = LeftHandItem.GetComponent<Rigidbody>();
-                leftRb.useGravity = false;
-                leftRb.isKinematic = true;
-            }
-        }
+        PerformInteraction(KeyCode.Mouse0, ref leftHandItem, leftHand);
     }
-    
+
     private void ProcessRightClick()
     {
-        if(RightHandItem != null && timeSinceInteraction >= timeBetweenInteractions)
-        {
-            DropRightHandItem();
-        }
-            
-        Debug.DrawRay(mainCamera.transform.position, mainCamera.transform.forward * pickupRange, Color.green, pickupRange);
-            
+        PerformInteraction(KeyCode.Mouse1, ref rightHandItem, rightHand);
+    }
+
+    private void PerformInteraction(KeyCode key, ref Item handItem, Transform handTransform)
+    {
+        Debug.DrawRay(mainCamera.transform.position, mainCamera.transform.forward * pickupRange, Color.red, pickupRange);
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
-        if(Physics.Raycast(ray, out hit, pickupRange) && timeSinceInteraction >= timeBetweenInteractions)
+
+        if (handItem != null && timeSinceInteraction >= timeBetweenInteractions)
         {
-            var hitObject = hit.collider.GetComponent<Item>();
-            if (hitObject != null)
+            // Try interacting with objects
+            if (Physics.Raycast(ray, out hit, pickupRange))
             {
-                hitObject.isInHands = true;
-                timeSinceInteraction = 0f;
-                Item itemHit = hitObject;
-                Debug.Log("picked up " + itemHit.name);    
-                RightHandItem = itemHit;
-                rightRb = RightHandItem.GetComponent<Rigidbody>();
-                rightRb.useGravity = false;
-                rightRb.isKinematic = true;
+                if (hit.collider.CompareTag("Interactable"))
+                {
+                    InteractableBase hitObject = hit.collider.GetComponent<InteractableBase>();
+                    hitObject.Interact(handItem);
+
+                    if (hitObject.interactionType == InteractableBase.InteractionType.Hold)
+                    {
+                        currentHoldInteractable = hitObject;
+                        currentHoldKey = key;
+                    }
+                    return;
+                }
+            }
+
+            // Use the item in hand
+            handItem.Use();
+            timeSinceInteraction = 0f;
+            return;
+        }
+
+        // Try picking up a new item if the hand is empty
+        if (Physics.Raycast(ray, out hit, pickupRange))
+        {
+            if (hit.collider.CompareTag("Item"))
+            {
+                Item hitItem = hit.collider.GetComponent<Item>();
+                if (hitItem != null)
+                {
+                    AddItemToHand(hitItem, ref handItem, handTransform);
+                }
+            }
+            else if (hit.collider.CompareTag("Interactable"))
+            {
+                InteractableBase hitObject = hit.collider.GetComponent<InteractableBase>();
+                hitObject.Interact(handItem);
             }
         }
     }
-    
-    private void DropRightHandItem()
+
+    private void CheckHoldInteraction()
     {
-        //RightHandItem.transform.position = mainCamera.transform.position + mainCamera.transform.forward * 2;
-        //RightHandItem.transform.rotation = Quaternion.identity;
-        RightHandItem.isInHands = false;
-        rightRb.useGravity = true;
-        rightRb.isKinematic = false;
-        rightRb = null;
-        RightHandItem = null;
+        if (currentHoldInteractable == null)
+            return;
+
+        Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hit;
+        bool objectStillInView = Physics.Raycast(ray, out hit, pickupRange) && hit.collider.gameObject == currentHoldInteractable.gameObject;
+        bool objectInRange = Vector3.Distance(transform.position, currentHoldInteractable.transform.position) <= pickupRange;
+        bool isKeyStillPressed = Input.GetKey(currentHoldKey);
+
+        if (!objectStillInView || !objectInRange || !isKeyStillPressed)
+        {
+            Debug.Log("Hold interaction cancelled");
+            currentHoldInteractable.CancelInteraction();
+            currentHoldInteractable = null;
+        }
+    }
+
+    private void AddItemToHand(Item item, ref Item handItem, Transform handTransform)
+    {
+        handItem = item; // Assign to correct hand variable
+        item.isInHands = true;
+        timeSinceInteraction = 0f;
+        Debug.Log("Picked up " + item.name);
+
+        Rigidbody itemRb = item.GetComponent<Rigidbody>();
+        if (itemRb)
+        {
+            itemRb.useGravity = false;
+            itemRb.isKinematic = true;
+        }
+
+        item.transform.SetParent(handTransform);
+        item.transform.localPosition = Vector3.zero;
+        item.transform.localRotation = Quaternion.identity;
+    }
+
+    public void DropItem(ref Item handItem)
+    {
+        if (handItem == null) return;
+
+        Rigidbody itemRb = handItem.GetComponent<Rigidbody>();
+        if (itemRb)
+        {
+            itemRb.useGravity = true;
+            itemRb.isKinematic = false;
+        }
+        handItem.isInHands = false;
+        handItem.transform.SetParent(null);
+        handItem = null;
         timeSinceInteraction = 0f;
     }
-    
-    private void DropLeftHandItem()
-    {    
-        //LeftHandItem.transform.position = mainCamera.transform.position + mainCamera.transform.forward * 2;
-        //LeftHandItem.transform.rotation = Quaternion.identity;
-        LeftHandItem.isInHands = false;
-        leftRb.useGravity = true;
-        leftRb.isKinematic = false;
-        LeftHandItem = null;
-        leftRb = null;
-        timeSinceInteraction = 0f;  
+
+
+    private void RemoveItemFromLeftHand()
+    {
+        leftHandItem = null;
+    }
+
+    private void RemoveItemFromRightHand()
+    {
+        rightHandItem = null;
     }
 }

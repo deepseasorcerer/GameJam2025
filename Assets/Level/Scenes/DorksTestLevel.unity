@@ -2559,9 +2559,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3511107427674046865, guid: 107ea61b04421fd46b8a13c383732005, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 3511107427674046865, guid: 107ea61b04421fd46b8a13c383732005, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8945450813809578021, guid: 107ea61b04421fd46b8a13c383732005, type: 3}
       propertyPath: m_Name
       value: SpaceTape (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945450813809578021, guid: 107ea61b04421fd46b8a13c383732005, type: 3}
+      propertyPath: m_TagString
+      value: Item
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5543,9 +5555,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3511107427674046865, guid: 107ea61b04421fd46b8a13c383732005, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3511107427674046865, guid: 107ea61b04421fd46b8a13c383732005, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 3511107427674046865, guid: 107ea61b04421fd46b8a13c383732005, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8945450813809578021, guid: 107ea61b04421fd46b8a13c383732005, type: 3}
       propertyPath: m_Name
       value: SpaceTape
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945450813809578021, guid: 107ea61b04421fd46b8a13c383732005, type: 3}
+      propertyPath: m_TagString
+      value: Item
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
