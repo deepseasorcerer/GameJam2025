@@ -5,6 +5,7 @@ using UnityEngine;
 public class AirLeakEvent : MonoBehaviour
 {
     [SerializeField] string GameEventName = "AirLeak";
+    [SerializeField] private GameEventType currentEvent = GameEventType.AirLeak;
     [SerializeField] private float EventDuration = 10f;
     [SerializeField] private bool isActive;
     public float timeLeft;
@@ -34,11 +35,12 @@ public class AirLeakEvent : MonoBehaviour
         }
     }
     
-    private void FailedTask()
+    public void FailedTask()
     {
         isActive = false;
         StopParticleSystem();
         Debug.Log("Air leak event failed");
+        //TODO Failed Screen
     }
 
 
