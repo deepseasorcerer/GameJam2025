@@ -5,7 +5,7 @@ using UnityEngine;
 public class AirLeakEvent : MonoBehaviour
 {
     [SerializeField] string GameEventName = "AirLeak";
-    [SerializeField] private GameEventType currentEvent = GameEventType.AirLeak;
+    [SerializeField] private GameEventType eventType = GameEventType.AirLeak;
     [SerializeField] private float EventDuration = 10f;
     [SerializeField] private bool isActive;
     public float timeLeft;
