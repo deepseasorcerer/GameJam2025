@@ -15,8 +15,16 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
 
     [SerializeField] private float interactionCooldown = 0.1f;
     private float lastInteractionTime = 0f;
-    public void Interact(Item usedItem = null)
+
+    PlayerHands playerHands;
+    public void Interact(PlayerHands playerHands, Item usedItem = null)
     {
+        this.playerHands = playerHands;
+        if(!CheckRequiredItems(usedItem))
+        {
+            return;
+        }
+
         if (Time.time - lastInteractionTime < interactionCooldown)
         {
             return;
@@ -27,6 +35,8 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
         if (interactionType == InteractionType.Instant)
         {
             PerformInteraction();
+            Debug.Log(requiredItem);
+            playerHands.RemoveItemFromHand(requiredItem);
             isInteracting = false;
         }
         else if (interactionType == InteractionType.Hold)
@@ -63,13 +73,15 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
         if (isInteracting)
         {
             PerformInteraction();
+            playerHands.RemoveItemFromHand(requiredItem);
             interactionTimer = 0;
         }
     }
 
+
     private bool CheckRequiredItems(Item item)
     {
-        if (requiredItem = item)
+        if (requiredItem == item || requiredItem == null)
         {
             Debug.Log("ItemPresent");
             return true;

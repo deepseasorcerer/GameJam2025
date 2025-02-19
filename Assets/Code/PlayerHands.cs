@@ -81,7 +81,7 @@ public class PlayerHands : MonoBehaviour
                 if (hit.collider.CompareTag("Interactable"))
                 {
                     InteractableBase hitObject = hit.collider.GetComponent<InteractableBase>();
-                    hitObject.Interact(handItem);
+                    hitObject.Interact(this,handItem);
 
                     if (hitObject.interactionType == InteractableBase.InteractionType.Hold)
                     {
@@ -104,7 +104,7 @@ public class PlayerHands : MonoBehaviour
             if (hit.collider.CompareTag("Item"))
             {
                 Item hitItem = hit.collider.GetComponent<Item>();
-                if (hitItem != null)
+                if (hitItem != null && hitItem != leftHandItem && hitItem != rightHandItem)
                 {
                     AddItemToHand(hitItem, ref handItem, handTransform);
                 }
@@ -112,7 +112,7 @@ public class PlayerHands : MonoBehaviour
             else if (hit.collider.CompareTag("Interactable"))
             {
                 InteractableBase hitObject = hit.collider.GetComponent<InteractableBase>();
-                hitObject.Interact(handItem);
+                hitObject.Interact(this,handItem);
             }
         }
     }
@@ -138,6 +138,10 @@ public class PlayerHands : MonoBehaviour
 
     private void AddItemToHand(Item item, ref Item handItem, Transform handTransform)
     {
+        if(handItem != null)
+        {
+            return;
+        }
         handItem = item; // Assign to correct hand variable
         item.isInHands = true;
         timeSinceInteraction = 0f;
@@ -172,13 +176,21 @@ public class PlayerHands : MonoBehaviour
     }
 
 
-    private void RemoveItemFromLeftHand()
+    public void RemoveItemFromHand(Item item)
     {
-        leftHandItem = null;
-    }
+        if (item == null) return;
 
-    private void RemoveItemFromRightHand()
-    {
-        rightHandItem = null;
+        if (leftHandItem == item)
+        {
+            Debug.Log(leftHandItem +" " +  item);
+            leftHandItem.Destroy();
+            leftHandItem = null;
+        }
+        else if (rightHandItem == item)
+        {
+            rightHandItem.Destroy();
+            rightHandItem = null;
+            
+        }
     }
 }

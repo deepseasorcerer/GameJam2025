@@ -13,6 +13,6 @@ public class Item : MonoBehaviour
 
     public virtual void Destroy()
     {
-        this.Destroy();
+        Destroy(this.gameObject);
     }
 }
