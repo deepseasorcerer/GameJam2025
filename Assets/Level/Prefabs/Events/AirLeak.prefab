@@ -46,9 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9526766195002a448801f7ded5b6e92e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameEventName: AirLeak
+  EventDuration: 10
+  isActive: 1
   timeLeft: 0
   airParticles: {fileID: 0}
-  isActive: 1
 --- !u!198 &7523843629341987640
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -756,7 +758,7 @@ ParticleSystem:
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 0
-    m_Texture: {fileID: 0}
+    m_Texture: {fileID: 2800000, guid: 0f6d51a431df44542bae87898f9a78e6, type: 3}
     m_TextureClipChannel: 3
     m_TextureClipThreshold: 0
     m_TextureUVChannel: 0

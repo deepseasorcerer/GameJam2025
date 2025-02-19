@@ -44,5 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a203125121f08264993ed44ffa9934d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvents:
-  - {fileID: 3357317113859909265, guid: 830a83db0223c864aa12411a128147da, type: 3}
+  currentEvent: 0
+  timeBetweenEvents: 40
+  timeBetweenEventsRandomness: 10
+  eventAcceleration: 4
