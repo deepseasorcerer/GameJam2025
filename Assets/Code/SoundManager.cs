@@ -23,6 +23,11 @@ public class Sound
         _source = source;
         _source.clip = clip;
     }
+    
+    public void Stop()
+    {
+        _source.Stop();
+    }
 
     public void Play()
     {

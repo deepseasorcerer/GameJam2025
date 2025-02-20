@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 
-public class RedirectShipEvent : MonoBehaviour
+public class RedirectShipEvent : InteractableBase
 {
     public void ActivateTask()
     {
-        Debug.Log("Redirect ship event activated");
+        Debug.Log("Fire event activated");
     }
-    
+
+    protected override void PerformInteraction()
+    {
+        throw new System.NotImplementedException();
+    }
 }

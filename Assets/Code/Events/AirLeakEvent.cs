@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [System.Serializable]
-public class AirLeakEvent : MonoBehaviour
+public class AirLeakEvent : InteractableBase
 {
     [SerializeField] string GameEventName = "AirLeak";
     [SerializeField] private GameEventType eventType = GameEventType.AirLeak;
@@ -10,9 +10,12 @@ public class AirLeakEvent : MonoBehaviour
     [SerializeField] private bool isActive;
     public float timeLeft;
     [SerializeField] private ParticleSystem airParticles;
+    private AudioSource audioSource;
+    [SerializeField] private bool isFixed = false;
     
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         isActive = false;
     }
 
@@ -43,11 +46,11 @@ public class AirLeakEvent : MonoBehaviour
         //TODO Failed Screen
     }
 
-
-
     public void ActivateTask()
     {
         isActive = true;
+        isFixed = false;
+        audioSource.enabled = true;
         StartParticleSystem();
         timeLeft = EventDuration;
     }
@@ -60,5 +63,30 @@ public class AirLeakEvent : MonoBehaviour
     private void StopParticleSystem()
     {
         airParticles.Stop();
+    }
+
+    public new void Interact(PlayerHands playerHands, Item item = null)
+    {
+        if (item is SpaceTape)
+        {
+            Debug.Log("worked!");
+        }
+        
+    }
+
+    public void CancelInteraction()
+    {
+        throw new NotImplementedException();
+    }
+
+    protected override void PerformInteraction()
+    {
+        if (isActive)
+        {
+            isFixed = true;
+            StopParticleSystem();
+            audioSource.enabled = false;
+            Debug.Log("Air leak event fixed");
+        }
     }
 }

@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
 
 
-public class FuelThrustersEvent : MonoBehaviour
+public class FuelThrustersEvent : InteractableBase
 {
     public void ActivateTask()
     {
-        Debug.Log("Fuel thrusters event activated");
+        Debug.Log("Fire event activated");
+    }
+
+    protected override void PerformInteraction()
+    {
+        throw new System.NotImplementedException();
     }
 }
