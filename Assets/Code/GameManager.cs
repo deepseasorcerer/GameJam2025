@@ -62,7 +62,6 @@ public class GameManager : MonoBehaviour
         {
             timeSinceCheckedEvents = 0f;
             var activeGECount = gameEventsInteractable.Count(x => x.isActive);
-            Debug.Log("Active Game Events: " + activeGECount);
             if(activeGECount == 0)
             {
                 _musicManager.SetMusicIntensity(MusicManager.MusicIntensity.Low);
@@ -81,14 +80,12 @@ public class GameManager : MonoBehaviour
     }
     private void StartRandomEvent()
     {
-        Debug.Log("Starting Random Event");
         var nonActiveGe = gameEventsInteractable.Where(x=>x.isActive == false).ToList();
         if(nonActiveGe.Count == 0)
         {
             return;
         }
         int eventIndex = Random.Range(0, nonActiveGe.Count);
-        Debug.Log("Event Index: " + eventIndex);
         //todo: Is there a better way? -Dork (either way not called much);
         nonActiveGe[eventIndex].TryGetComponent<AirLeakEvent>(out var airLeakEvent);
         if(airLeakEvent is not null && airLeakEvent.isActive == false)

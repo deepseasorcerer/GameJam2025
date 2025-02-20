@@ -53,8 +53,8 @@ public class PlayerHands : MonoBehaviour
             DropItem(ref rightHandItem);
         }
         
-
-
+        leftHand.position = mainCamera.transform.position + mainCamera.transform.right * -0.4f + mainCamera.transform.forward * 1.3f;
+        rightHand.position = mainCamera.transform.position + mainCamera.transform.right * 0.4f + mainCamera.transform.forward * 1.3f;
     }
 
     private void ProcessLeftClick()

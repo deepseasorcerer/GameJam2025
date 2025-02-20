@@ -86,7 +86,7 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
 
     private bool CheckRequiredItems(Item item)
     {
-        if (item?.itemName == requiredItem || requiredItem == null)
+        if (item?.itemName == requiredItem || requiredItem == "" || requiredItem == null)
         {
             Debug.Log("ItemPresent");
             return true;
