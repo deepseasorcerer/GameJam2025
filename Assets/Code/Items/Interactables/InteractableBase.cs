@@ -13,15 +13,18 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
 
     protected bool isInteracting = false;
     private float interactionTimer;
-    [SerializeField] private Item requiredItem;
+    [SerializeField] private string requiredItem;
 
     [SerializeField] private float interactionCooldown = 0.1f;
     private float lastInteractionTime = 0f;
+
+    private Item usedItem;
 
     PlayerHands playerHands;
     public void Interact(PlayerHands playerHands, Item usedItem = null)
     {
         this.playerHands = playerHands;
+        this.usedItem = usedItem;
         if(!CheckRequiredItems(usedItem))
         {
             return;
@@ -33,17 +36,17 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
         }
 
         lastInteractionTime = Time.time;
-
+        Debug.Log("Interacted");
         if (interactionType == InteractionType.Instant)
         {
             PerformInteraction();
             Debug.Log(requiredItem);
-            playerHands.RemoveItemFromHand(requiredItem);
+            playerHands.RemoveItemFromHand(usedItem);
             isInteracting = false;
         }
         else if (interactionType == InteractionType.Hold)
         {
-            Debug.Log("Start");
+
             if (isInteracting)
             {
                 return;
@@ -75,7 +78,7 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
         if (isInteracting)
         {
             PerformInteraction();
-            playerHands.RemoveItemFromHand(requiredItem);
+            playerHands.RemoveItemFromHand(usedItem);
             interactionTimer = 0;
         }
     }
@@ -83,7 +86,7 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
 
     private bool CheckRequiredItems(Item item)
     {
-        if (item?.itemName == requiredItem?.itemName || requiredItem == null)
+        if (item?.itemName == requiredItem || requiredItem == null)
         {
             Debug.Log("ItemPresent");
             return true;
