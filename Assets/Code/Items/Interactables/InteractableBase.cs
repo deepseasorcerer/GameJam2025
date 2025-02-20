@@ -10,7 +10,7 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
     public enum InteractionType { Instant, Hold }
     public InteractionType interactionType = InteractionType.Instant;
     public float holdTime = 5f;
-
+    public bool isActive = false;
     protected bool isInteracting = false;
     private float interactionTimer;
     [SerializeField] private string requiredItem;
