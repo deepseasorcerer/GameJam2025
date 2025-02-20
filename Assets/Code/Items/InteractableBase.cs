@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Unity.VisualScripting;
+using UnityEditor;
 
 public abstract class InteractableBase : MonoBehaviour, IInteractable
 {
@@ -81,7 +83,7 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
 
     private bool CheckRequiredItems(Item item)
     {
-        if (requiredItem == item || requiredItem == null)
+        if (item?.itemName == requiredItem?.itemName || requiredItem == null)
         {
             Debug.Log("ItemPresent");
             return true;

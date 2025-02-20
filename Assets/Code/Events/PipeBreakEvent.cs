@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
 
 
-public class PipeBreakEvent: MonoBehaviour
+public class PipeBreakEvent: InteractableBase
 {
     public void ActivateTask()
     {
-        Debug.Log("Pipe break event activated");
+        Debug.Log("Fire event activated");
+    }
+
+    protected override void PerformInteraction()
+    {
+        throw new System.NotImplementedException();
     }
 }
