@@ -27,7 +27,7 @@ public class MusicManager : MonoBehaviour
     private double timeSinceMusicStarted;
     private float fadeTime = 3f;
     
-    private float volumnMax = 1;
+    private float volumnMax = .5f;
     void Awake()
     { 
         if (_instance != null && _instance != this)
@@ -37,7 +37,7 @@ public class MusicManager : MonoBehaviour
         }
         
         _instance = this;
-        //DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);
     }
     
     void Start()
@@ -47,33 +47,32 @@ public class MusicManager : MonoBehaviour
         {
             MainMenuMusic.Play();
         }
-        else
-        {
-            StartGameMusic();
-        }
     }
     
     void Update()
     {
-        if (AudioSettings.dspTime >= songEndTime)
+        if (AudioSettings.dspTime >= songEndTime || !GameMusic[0].isPlaying)
         {
+            StartGameMusic();
             timeSinceMusicStarted = 0;
             SetMusicIntensity(currentIntensity);
         }
         timeSinceGameStarted += Time.deltaTime;
-        if(timeSinceGameStarted >= 5f && currentIntensity == MusicIntensity.Low)
-        {
-            Debug.Log("Music Intensity Increased");
-            currentIntensity = MusicIntensity.Medium;
-            SetMusicIntensity(currentIntensity);
-            timeSinceGameStarted = 0;
-        } else if(timeSinceGameStarted >= 5f && currentIntensity == MusicIntensity.Medium)
-        {
-            Debug.Log("Music Intensity Decreased");
-            currentIntensity = MusicIntensity.Low;
-            SetMusicIntensity(currentIntensity);
-            timeSinceGameStarted = 0;
-        }
+        
+        //Test Code
+        //if(timeSinceGameStarted >= 5f && currentIntensity == MusicIntensity.Low)
+        //{
+        //    Debug.Log("Music Intensity Increased");
+        //    currentIntensity = MusicIntensity.Medium;
+        //    SetMusicIntensity(currentIntensity);
+        //    timeSinceGameStarted = 0;
+        //} else if(timeSinceGameStarted >= 5f && currentIntensity == MusicIntensity.Medium)
+        //{
+        //    Debug.Log("Music Intensity Decreased");
+        //    currentIntensity = MusicIntensity.Low;
+        //    SetMusicIntensity(currentIntensity);
+        //    timeSinceGameStarted = 0;
+        //}
     }
     
     public void StartGameMusic()
@@ -81,21 +80,25 @@ public class MusicManager : MonoBehaviour
         MainMenuMusic.Stop();
         Double startTime = AudioSettings.dspTime + 2d;
         timeSinceMusicStarted = 0;
-        GameMusic[0].PlayScheduled(startTime);
+        GameMusic[0].PlayScheduled(startTime + 2d);
         GameMusic[0].volume = volumnMax;
-        GameMusic[1].PlayScheduled(startTime);
+        GameMusic[1].PlayScheduled(startTime + 2d);
         GameMusic[1].volume = 0;
+        GameMusic[2].PlayScheduled(startTime + 2d);
+        GameMusic[2].volume = 0;
         songEndTime = startTime + (60d / gameMusicBpm) * GameMusic[0].clip.samples -4d;
     }
     public void SetMusicIntensity(MusicIntensity intensity)
     {
+        //Debug.Log("GameMusic0:"+GameMusic[0].isPlaying + " " + GameMusic[0].volume);
+        //Debug.Log("GameMusic1:"+GameMusic[1].isPlaying + " " + GameMusic[1].volume);
+        //Debug.Log("GameMusic2:"+GameMusic[2].isPlaying + " " + GameMusic[2].volume);
         switch (intensity)
         {
             case MusicIntensity.Low:
                 StartCoroutine(FadeOutMusic(GameMusic[1]));
                 StartCoroutine(FadeOutMusic(GameMusic[2]));
                 StartCoroutine(FadeInMusic(GameMusic[0]));
-                
                 break;
             case MusicIntensity.Medium:
                 StartCoroutine(FadeOutMusic(GameMusic[0]));

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [System.Serializable]
 public class AirLeakEvent : InteractableBase
@@ -7,11 +8,11 @@ public class AirLeakEvent : InteractableBase
     [SerializeField] string GameEventName = "AirLeak";
     [SerializeField] private GameEventType eventType = GameEventType.AirLeak;
     [SerializeField] private float EventDuration = 10f;
-    [SerializeField] private bool isActive;
     public float timeLeft;
     [SerializeField] private ParticleSystem airParticles;
     private AudioSource audioSource;
     [SerializeField] private bool isFixed = false;
+    [SerializeField] private GameObject fixedTape;
     
     private void Awake()
     {
@@ -51,6 +52,7 @@ public class AirLeakEvent : InteractableBase
         isActive = true;
         isFixed = false;
         audioSource.enabled = true;
+        fixedTape.SetActive(false);
         StartParticleSystem();
         timeLeft = EventDuration;
     }
@@ -85,7 +87,9 @@ public class AirLeakEvent : InteractableBase
         {
             isFixed = true;
             StopParticleSystem();
+            isActive = false;
             audioSource.enabled = false;
+            fixedTape.SetActive(true);
             Debug.Log("Air leak event fixed");
         }
     }

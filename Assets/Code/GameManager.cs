@@ -1,9 +1,10 @@
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] gameEvents;
-    
+    private InteractableBase[] gameEventsInteractable;
     private static GameManager Instance;
     private float timeSinceLastEvent = 30f;
     [SerializeField] private float timeBetweenEvents = 40f;
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private float GameLength = 300f;
     private float timeElapsed = 0f;
+    private float timeSinceCheckedEvents = 0f;
+    private MusicManager _musicManager;
 
     private void Awake()
     {
@@ -23,11 +26,18 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+        gameEventsInteractable = gameEvents.Select(x => x.GetComponent<InteractableBase>()).ToArray();
+        
+
     }
     
     private void Start()
     {
-        
+        _musicManager = MusicManager.Instance;
+        if (_musicManager == null)
+        {
+            Debug.LogError("No MusicManager found in scene");
+        }
     }
     
     void Update()
@@ -40,46 +50,78 @@ public class GameManager : MonoBehaviour
         timeSinceLastEvent += Time.deltaTime;
         if(timeSinceLastEvent >= timeBetweenEvents)
         {
-            timeSinceLastEvent = timeBetweenEvents + Random.Range(-timeBetweenEventsRandomness, timeBetweenEventsRandomness);
+            timeSinceLastEvent = 0;
             timeBetweenEvents -= eventAcceleration;
+            timeBetweenEvents += Random.Range(-timeBetweenEventsRandomness, timeBetweenEventsRandomness);
             StartRandomEvent();
         }
+        
+        
+        timeSinceCheckedEvents += Time.deltaTime;
+        if(timeSinceCheckedEvents >= 2f)
+        {
+            timeSinceCheckedEvents = 0f;
+            var activeGECount = gameEventsInteractable.Count(x => x.isActive);
+            Debug.Log("Active Game Events: " + activeGECount);
+            if(activeGECount == 0)
+            {
+                _musicManager.SetMusicIntensity(MusicManager.MusicIntensity.Low);
+            }
+            if(activeGECount >= 1)
+            {
+                _musicManager.SetMusicIntensity(MusicManager.MusicIntensity.Medium);
+            }
+            //Currently no third track
+            //if(activeGECount >= 2)
+            //{
+            //    _musicManager.SetMusicIntensity(MusicManager.MusicIntensity.High);
+            //}
+        }
+        
     }
     private void StartRandomEvent()
     {
-        int randomEvent = Random.Range(0, gameEvents.Length);
-        
-        //todo: Is there a better way? -Dork (either way not called much);
-        gameEvents[randomEvent].TryGetComponent<AirLeakEvent>(out var airLeakEvent);
-        if(airLeakEvent is not null)
+        Debug.Log("Starting Random Event");
+        var nonActiveGe = gameEventsInteractable.Where(x=>x.isActive == false).ToList();
+        if(nonActiveGe.Count == 0)
         {
-            gameEvents[randomEvent].GetComponent<AirLeakEvent>().ActivateTask();
+            return;
         }
-        gameEvents[randomEvent].TryGetComponent<FireEvent>(out var fireEvent);
+        int eventIndex = Random.Range(0, nonActiveGe.Count);
+        Debug.Log("Event Index: " + eventIndex);
+        //todo: Is there a better way? -Dork (either way not called much);
+        nonActiveGe[eventIndex].TryGetComponent<AirLeakEvent>(out var airLeakEvent);
+        if(airLeakEvent is not null && airLeakEvent.isActive == false)
+        {
+            nonActiveGe[eventIndex].GetComponent<AirLeakEvent>().ActivateTask();
+        }
+        nonActiveGe[eventIndex].TryGetComponent<FireEvent>(out var fireEvent);
         if(fireEvent is not null)
         {
-            gameEvents[randomEvent].GetComponent<FireEvent>().ActivateTask();
+            nonActiveGe[eventIndex].GetComponent<FireEvent>().ActivateTask();
         }
-        gameEvents[randomEvent].TryGetComponent<PowerOutageEvent>(out var powerOutageEvent);
+        nonActiveGe[eventIndex].TryGetComponent<PowerOutageEvent>(out var powerOutageEvent);
         if(powerOutageEvent is not null)
         {
-            gameEvents[randomEvent].GetComponent<PowerOutageEvent>().ActivateTask();
+            nonActiveGe[eventIndex].GetComponent<PowerOutageEvent>().ActivateTask();
         }
-        gameEvents[randomEvent].TryGetComponent<PipeBreakEvent>(out var pipeBreakEvent);
+        nonActiveGe[eventIndex].TryGetComponent<PipeBreakEvent>(out var pipeBreakEvent);
         if(pipeBreakEvent is not null)
         {
-            gameEvents[randomEvent].GetComponent<PipeBreakEvent>().ActivateTask();
+            nonActiveGe[eventIndex].GetComponent<PipeBreakEvent>().ActivateTask();
         }
-        gameEvents[randomEvent].TryGetComponent<RedirectShipEvent>(out var redirectShipEvent);
+        nonActiveGe[eventIndex].TryGetComponent<RedirectShipEvent>(out var redirectShipEvent);
         if(redirectShipEvent is not null)
         {
-            gameEvents[randomEvent].GetComponent<RedirectShipEvent>().ActivateTask();
+            nonActiveGe[eventIndex].GetComponent<RedirectShipEvent>().ActivateTask();
         }
-        gameEvents[randomEvent].TryGetComponent<FuelThrustersEvent>(out var fuelThrustersEvent);
+        nonActiveGe[eventIndex].TryGetComponent<FuelThrustersEvent>(out var fuelThrustersEvent);
         if(fuelThrustersEvent)
         {
-            gameEvents[randomEvent].GetComponent<FuelThrustersEvent>().ActivateTask();
+            nonActiveGe[eventIndex].GetComponent<FuelThrustersEvent>().ActivateTask();
         }
+        
+        
         
     }
     
