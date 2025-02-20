@@ -1,10 +1,15 @@
 ﻿
 using UnityEngine;
 
-public class PowerOutageEvent : MonoBehaviour
+public class PowerOutageEvent : InteractableBase
 {
     public void ActivateTask()
     {
-        Debug.Log("Power outage event activated");
+        Debug.Log("Fire event activated");
+    }
+
+    protected override void PerformInteraction()
+    {
+        throw new System.NotImplementedException();
     }
 }

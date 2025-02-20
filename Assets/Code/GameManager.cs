@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] gameEvents;
     
     private static GameManager Instance;
-    private float timeSinceLastEvent = 0;
+    private float timeSinceLastEvent = 30f;
     [SerializeField] private float timeBetweenEvents = 40f;
     [SerializeField] private float timeBetweenEventsRandomness = 10f;
     [SerializeField] private float eventAcceleration = 4f;
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     {
         int randomEvent = Random.Range(0, gameEvents.Length);
         
-        //todo: Is there a better way? -Dork (either way no called much);
+        //todo: Is there a better way? -Dork (either way not called much);
         gameEvents[randomEvent].TryGetComponent<AirLeakEvent>(out var airLeakEvent);
         if(airLeakEvent is not null)
         {
