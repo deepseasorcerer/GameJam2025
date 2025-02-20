@@ -9,6 +9,21 @@ public class Item : MonoBehaviour
     public virtual void Use()
     {
         Debug.Log(itemName + " does nothing");
+    
+    }
+
+    public void Update()
+    {
+        if(isInHands)
+        {
+            this.GetComponent<BoxCollider>().enabled = false;
+
+        }
+        else
+        {
+            this.GetComponent<BoxCollider>().enabled = true;
+        }
+
     }
 
     public virtual void Destroy()

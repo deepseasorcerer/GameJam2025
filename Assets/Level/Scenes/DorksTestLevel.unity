@@ -2341,12 +2341,12 @@ GameObject:
   - component: {fileID: 984189471}
   - component: {fileID: 984189470}
   m_Layer: 0
-  m_Name: wer (2)
+  m_Name: Ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &984189470
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5696,3 +5696,4 @@ SceneRoots:
   - {fileID: 2098224727}
   - {fileID: 3078305188534285674}
   - {fileID: 813924860}
+  - {fileID: 1058239075}
