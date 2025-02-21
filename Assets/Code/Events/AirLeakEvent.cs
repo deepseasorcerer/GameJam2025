@@ -8,10 +8,11 @@ public class AirLeakEvent : InteractableBase
     [SerializeField] string GameEventName = "AirLeak";
     [SerializeField] private GameEventType eventType = GameEventType.AirLeak;
     [SerializeField] private float EventDuration = 10f;
+    [SerializeField] private bool isFixed = false;
     public float timeLeft;
     [SerializeField] private ParticleSystem airParticles;
     private AudioSource audioSource;
-    [SerializeField] private bool isFixed = false;
+    
     [SerializeField] private GameObject fixedTape;
     
     private void Awake()
@@ -73,7 +74,6 @@ public class AirLeakEvent : InteractableBase
         {
             Debug.Log("worked!");
         }
-        
     }
 
     public void CancelInteraction()

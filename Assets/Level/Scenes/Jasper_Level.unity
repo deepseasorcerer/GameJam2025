@@ -664,6 +664,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68791360}
   m_Mesh: {fileID: 3897611468420552282, guid: 768fa5b17a234e244b48bfbaf76e7ebb, type: 3}
+--- !u!1 &75106147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+  m_PrefabInstance: {fileID: 932594577}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &75106148
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75106147}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0bca2984846f6f3438e12df6acba65b5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &83853255
 GameObject:
   m_ObjectHideFlags: 0
@@ -6741,6 +6768,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 577364635}
   m_Mesh: {fileID: 3897611468420552282, guid: 768fa5b17a234e244b48bfbaf76e7ebb, type: 3}
+--- !u!1 &589365361 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+  m_PrefabInstance: {fileID: 1799696814}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &589365362
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589365361}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0bca2984846f6f3438e12df6acba65b5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &589647308
 GameObject:
   m_ObjectHideFlags: 0
@@ -9885,6 +9939,66 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6997607254833168410, guid: 768fa5b17a234e244b48bfbaf76e7ebb, type: 3}
+--- !u!1001 &932594577
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.84
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.7647614
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.53
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_Name
+      value: Dancing Twerk (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 75106148}
+  m_SourcePrefab: {fileID: 100100000, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
 --- !u!1 &954596104
 GameObject:
   m_ObjectHideFlags: 0
@@ -14392,6 +14506,66 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278171965}
   m_Mesh: {fileID: -3955329075672609589, guid: 768fa5b17a234e244b48bfbaf76e7ebb, type: 3}
+--- !u!1001 &1280434466
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.000195
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.7647614
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.53
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_Name
+      value: Dancing Twerk (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1538203992}
+  m_SourcePrefab: {fileID: 100100000, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
 --- !u!1 &1283501066
 GameObject:
   m_ObjectHideFlags: 0
@@ -16376,6 +16550,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1516262277}
   m_Mesh: {fileID: 3897611468420552282, guid: 768fa5b17a234e244b48bfbaf76e7ebb, type: 3}
+--- !u!1 &1538203990 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+  m_PrefabInstance: {fileID: 1280434466}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1538203992
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538203990}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0bca2984846f6f3438e12df6acba65b5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1556338981
 GameObject:
   m_ObjectHideFlags: 0
@@ -18735,6 +18936,66 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775409976}
   m_Mesh: {fileID: 3897611468420552282, guid: 768fa5b17a234e244b48bfbaf76e7ebb, type: 3}
+--- !u!1001 &1799696814
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -16.46
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.7647614
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -13.53
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      propertyPath: m_Name
+      value: Dancing Twerk (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 589365362}
+  m_SourcePrefab: {fileID: 100100000, guid: fe29c617789aa3c49bbb853aeb5adc73, type: 3}
 --- !u!1 &1814854334
 GameObject:
   m_ObjectHideFlags: 0
@@ -22180,3 +22441,6 @@ SceneRoots:
   - {fileID: 1366403115}
   - {fileID: 494526523}
   - {fileID: 1934917266}
+  - {fileID: 1280434466}
+  - {fileID: 932594577}
+  - {fileID: 1799696814}
