@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private float timeSinceLastEvent = 30f;
     [SerializeField] private float timeBetweenEvents = 40f;
     [SerializeField] private float timeBetweenEventsRandomness = 10f;
+    [SerializeField] private float minTimeBetweenEvents = 20f; 
     [SerializeField] private float eventAcceleration = 4f;
     
     [SerializeField] private float GameLength = 300f;
@@ -53,6 +54,10 @@ public class GameManager : MonoBehaviour
             timeSinceLastEvent = 0;
             timeBetweenEvents -= eventAcceleration;
             timeBetweenEvents += Random.Range(-timeBetweenEventsRandomness, timeBetweenEventsRandomness);
+            if(timeBetweenEvents < minTimeBetweenEvents)
+            {
+                timeBetweenEvents = minTimeBetweenEvents;
+            }
             StartRandomEvent();
         }
         
@@ -62,6 +67,7 @@ public class GameManager : MonoBehaviour
         {
             timeSinceCheckedEvents = 0f;
             var activeGECount = gameEventsInteractable.Count(x => x.isActive);
+            Debug.Log("Active GameEvents: " + activeGECount);
             if(activeGECount == 0)
             {
                 _musicManager.SetMusicIntensity(MusicManager.MusicIntensity.Low);
@@ -82,6 +88,7 @@ public class GameManager : MonoBehaviour
         var nonActiveGe = gameEventsInteractable.Where(x=>x.isActive == false).ToList();
         if(nonActiveGe.Count == 0)
         {
+            //Debug.Log("No more events to start");
             return;
         }
         int eventIndex = Random.Range(0, nonActiveGe.Count);
