@@ -304,7 +304,6 @@ MonoBehaviour:
   batteryPrefab: {fileID: 0}
   spawnPoint: {fileID: 8945475322392862174}
   spawnInterval: 6
-  animator: {fileID: 97482248367499888}
 --- !u!135 &3881717816435988844
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -421,7 +420,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: battery_dispenser
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -7539576332946300553, guid: 0eb02ca36f2109646b563e5f778e9eee, type: 3}
+    - {fileID: 6326140487732792139, guid: 0eb02ca36f2109646b563e5f778e9eee, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -513,7 +514,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: battery_dispenser (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -7539576332946300553, guid: 0eb02ca36f2109646b563e5f778e9eee, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6335250783087129314, guid: 0eb02ca36f2109646b563e5f778e9eee, type: 3}
     m_AddedGameObjects: []

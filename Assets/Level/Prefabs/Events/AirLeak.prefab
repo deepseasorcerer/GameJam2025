@@ -81,7 +81,7 @@ GameObject:
   m_Layer: 0
   m_Name: AirLeak
   m_TagString: Interactable
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -115,15 +115,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 0
   holdTime: 5
+  isActive: 1
   requiredItem: SpaceTape
   interactionCooldown: 0.1
   GameEventName: AirLeak
   eventType: 0
   EventDuration: 10
-  isActive: 1
+  isFixed: 0
   timeLeft: 0
   airParticles: {fileID: 0}
-  isFixed: 0
   fixedTape: {fileID: 9107364525505675087}
 --- !u!198 &7523843629341987640
 ParticleSystem:
