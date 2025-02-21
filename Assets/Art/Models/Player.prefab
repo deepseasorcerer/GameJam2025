@@ -185,9 +185,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   runSpeed: 10
-  jumpForce: 6
+  jumpForce: 10
   gravity: 6
-  lookSpeed: 400
+  lookSpeed: 200
   lookXLimit: 45
 --- !u!114 &6783614611224813589
 MonoBehaviour:
@@ -201,8 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e0d22d9180013142b56a6f1528902d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RightHandItem: {fileID: 0}
-  LeftHandItem: {fileID: 0}
+  rightHandItem: {fileID: 0}
+  leftHandItem: {fileID: 0}
   rightHand: {fileID: 2466758487542386532}
   leftHand: {fileID: 9135192263707155122}
   pickupRange: 2

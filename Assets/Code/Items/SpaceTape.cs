@@ -18,10 +18,10 @@ public class SpaceTape : Item
         _rb = GetComponent<Rigidbody>();
         _originalPosition = transform.position;
     }
-    
-    void Update()
+
+    private void Update()
     {
-        if (!isInHands && Vector3.Distance(_rb.position, _originalPosition) > 0.1f)
+        if (!isInHands && Vector3.Distance(_rb.position, _originalPosition) > 0.3f)
         {
             _timeSinceMoved += Time.deltaTime;
             if (_timeSinceMoved >= _timeToReset)
@@ -32,6 +32,11 @@ public class SpaceTape : Item
                 _timeSinceMoved = 0f;
             }
         }
+        if(isInHands)
+        {
+            //var whichHand = this.gameObject.GetComponentInParent<PlayerHands>();
+            transform.localRotation = Quaternion.Euler(0, 45, 45);
+            
+        }
     }
-
 }

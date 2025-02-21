@@ -59,20 +59,6 @@ public class MusicManager : MonoBehaviour
         }
         timeSinceGameStarted += Time.deltaTime;
         
-        //Test Code
-        //if(timeSinceGameStarted >= 5f && currentIntensity == MusicIntensity.Low)
-        //{
-        //    Debug.Log("Music Intensity Increased");
-        //    currentIntensity = MusicIntensity.Medium;
-        //    SetMusicIntensity(currentIntensity);
-        //    timeSinceGameStarted = 0;
-        //} else if(timeSinceGameStarted >= 5f && currentIntensity == MusicIntensity.Medium)
-        //{
-        //    Debug.Log("Music Intensity Decreased");
-        //    currentIntensity = MusicIntensity.Low;
-        //    SetMusicIntensity(currentIntensity);
-        //    timeSinceGameStarted = 0;
-        //}
     }
     
     public void StartGameMusic()
@@ -90,6 +76,10 @@ public class MusicManager : MonoBehaviour
     }
     public void SetMusicIntensity(MusicIntensity intensity)
     {
+        if(currentIntensity == intensity)
+        {
+            return;
+        }
         //Debug.Log("GameMusic0:"+GameMusic[0].isPlaying + " " + GameMusic[0].volume);
         //Debug.Log("GameMusic1:"+GameMusic[1].isPlaying + " " + GameMusic[1].volume);
         //Debug.Log("GameMusic2:"+GameMusic[2].isPlaying + " " + GameMusic[2].volume);
