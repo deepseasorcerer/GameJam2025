@@ -58,6 +58,7 @@ public class PowerOutageEvent : InteractableBase
             fixedBattery.SetActive(true);
             isFixed = true;
             isActive = false;
+            _soundManager.PlaySound("PowerOn");
             Debug.Log("Power Outage event fixed");
         }
     }
