@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3463966371528781864}
-  - component: {fileID: 5536209772697560124}
+  - component: {fileID: 4154692513726256988}
   m_Layer: 0
   m_Name: PipeBreak
   m_TagString: Interactable
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 6127157011611576520}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5536209772697560124
+--- !u!114 &4154692513726256988
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -54,7 +54,6 @@ MonoBehaviour:
   eventType: 3
   EventDuration: 60
   isFixed: 0
-  fixedBattery: {fileID: 0}
   timeLeft: 0
 --- !u!1001 &5945509809143648035
 PrefabInstance:
@@ -114,7 +113,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 356c0a8b7b3e18445b0995d854685f51, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6261567678779895491}
+      addedObject: {fileID: 3576123344852563126}
   m_SourcePrefab: {fileID: 100100000, guid: 356c0a8b7b3e18445b0995d854685f51, type: 3}
 --- !u!4 &6127157011611576520 stripped
 Transform:
@@ -126,7 +125,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 356c0a8b7b3e18445b0995d854685f51, type: 3}
   m_PrefabInstance: {fileID: 5945509809143648035}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &6261567678779895491
+--- !u!65 &3576123344852563126
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
