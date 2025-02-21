@@ -6195,6 +6195,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 830a83db0223c864aa12411a128147da, type: 3}
+--- !u!1 &2098224728 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2353176859469783067, guid: 830a83db0223c864aa12411a128147da, type: 3}
+  m_PrefabInstance: {fileID: 2098224727}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2114956442
 GameObject:
   m_ObjectHideFlags: 0
@@ -6667,6 +6672,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60e793b9c042f7443b9faa39675aeb31, type: 3}
+--- !u!1 &2030988142598374695 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4504971711552912656, guid: 60e793b9c042f7443b9faa39675aeb31, type: 3}
+  m_PrefabInstance: {fileID: 2030988142598374694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2902210312222890417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6777,8 +6787,12 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 8978435638955531280, guid: cde8b5eb269019448bed2cb7502d51ec, type: 3}
+      propertyPath: timeBetweenEvents
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978435638955531280, guid: cde8b5eb269019448bed2cb7502d51ec, type: 3}
       propertyPath: gameEvents.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8978435638955531280, guid: cde8b5eb269019448bed2cb7502d51ec, type: 3}
       propertyPath: 'gameEvents.Array.data[0]'
@@ -6788,6 +6802,14 @@ PrefabInstance:
       propertyPath: 'gameEvents.Array.data[1]'
       value: 
       objectReference: {fileID: 1750554155}
+    - target: {fileID: 8978435638955531280, guid: cde8b5eb269019448bed2cb7502d51ec, type: 3}
+      propertyPath: 'gameEvents.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2098224728}
+    - target: {fileID: 8978435638955531280, guid: cde8b5eb269019448bed2cb7502d51ec, type: 3}
+      propertyPath: 'gameEvents.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2030988142598374695}
     m_RemovedComponents:
     - {fileID: 4487484475943063207, guid: cde8b5eb269019448bed2cb7502d51ec, type: 3}
     m_RemovedGameObjects: []
@@ -7061,6 +7083,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 942241288446546612, guid: 403fb25fee1053f4e883e71e5e9fa232, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 3799b036d4df33a4f9cf31f3d8d970f8, type: 3}
+    - target: {fileID: 942241288446546612, guid: 403fb25fee1053f4e883e71e5e9fa232, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3799b036d4df33a4f9cf31f3d8d970f8, type: 3}
     - target: {fileID: 2146567872392943244, guid: 403fb25fee1053f4e883e71e5e9fa232, type: 3}
       propertyPath: m_Name
       value: MusicManager

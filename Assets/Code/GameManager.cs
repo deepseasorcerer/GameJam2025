@@ -66,15 +66,14 @@ public class GameManager : MonoBehaviour
             {
                 _musicManager.SetMusicIntensity(MusicManager.MusicIntensity.Low);
             }
-            if(activeGECount >= 1)
+            if(activeGECount == 1)
             {
                 _musicManager.SetMusicIntensity(MusicManager.MusicIntensity.Medium);
             }
-            //Currently no third track
-            //if(activeGECount >= 2)
-            //{
-            //    _musicManager.SetMusicIntensity(MusicManager.MusicIntensity.High);
-            //}
+            if(activeGECount >= 2)
+            {
+                _musicManager.SetMusicIntensity(MusicManager.MusicIntensity.High);
+            }
         }
         
     }
