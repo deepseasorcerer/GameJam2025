@@ -7,11 +7,12 @@ TagManager:
   - Interactable
   - Event
   - Item
+  - ExtinguisherFoam
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - FIre
   - Water
   - UI
   - 

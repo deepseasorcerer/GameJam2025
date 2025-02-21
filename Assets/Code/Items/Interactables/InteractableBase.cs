@@ -15,7 +15,7 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
     private float interactionTimer;
     [SerializeField] private string requiredItem;
 
-    [SerializeField] private float interactionCooldown = 0.1f;
+    [SerializeField] private float interactionCooldown = 0.5f;
     private float lastInteractionTime = 0f;
 
     private Item usedItem;
@@ -25,7 +25,7 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
     {
         this.playerHands = playerHands;
         this.usedItem = usedItem;
-        if(!CheckRequiredItems(usedItem))
+        if (!CheckRequiredItems(usedItem))
         {
             return;
         }

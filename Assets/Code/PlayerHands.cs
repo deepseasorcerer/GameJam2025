@@ -31,19 +31,19 @@ public class PlayerHands : MonoBehaviour
     {
         timeSinceInteraction += Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
             ProcessLeftClick();
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.GetKey(KeyCode.Mouse1))
         {
             ProcessRightClick();
         }
 
         CheckHoldInteraction();
 
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             DropItem(ref leftHandItem);
         }
@@ -52,9 +52,13 @@ public class PlayerHands : MonoBehaviour
         {
             DropItem(ref rightHandItem);
         }
-        
-        leftHand.position = mainCamera.transform.position + mainCamera.transform.right * -0.4f + mainCamera.transform.forward * 1.3f;
-        rightHand.position = mainCamera.transform.position + mainCamera.transform.right * 0.4f + mainCamera.transform.forward * 1.3f;
+
+        leftHand.position = mainCamera.transform.position + mainCamera.transform.right * -0.6f + mainCamera.transform.forward * 0.9f + Vector3.up * -0.6f;
+        rightHand.position = mainCamera.transform.position + mainCamera.transform.right * 0.6f + mainCamera.transform.forward * 0.9f + Vector3.up * -0.6f;
+
+        leftHand.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
+        rightHand.rotation = Quaternion.LookRotation(mainCamera.transform.forward);
+
     }
 
     private void ProcessLeftClick()
@@ -81,7 +85,7 @@ public class PlayerHands : MonoBehaviour
                 if (hit.collider.CompareTag("Interactable"))
                 {
                     InteractableBase hitObject = hit.collider.GetComponent<InteractableBase>();
-                    hitObject.Interact(this,handItem);
+                    hitObject.Interact(this, handItem);
 
                     if (hitObject.interactionType == InteractableBase.InteractionType.Hold)
                     {
@@ -112,7 +116,14 @@ public class PlayerHands : MonoBehaviour
             else if (hit.collider.CompareTag("Interactable"))
             {
                 InteractableBase hitObject = hit.collider.GetComponent<InteractableBase>();
-                hitObject.Interact(this,handItem);
+                hitObject.Interact(this, handItem);
+
+                if (hitObject.interactionType == InteractableBase.InteractionType.Hold)
+                {
+                    currentHoldInteractable = hitObject;
+                    currentHoldKey = key;
+                }
+                return;
             }
         }
     }
@@ -138,7 +149,7 @@ public class PlayerHands : MonoBehaviour
 
     private void AddItemToHand(Item item, ref Item handItem, Transform handTransform)
     {
-        if(handItem != null)
+        if (handItem != null)
         {
             return;
         }
@@ -182,7 +193,7 @@ public class PlayerHands : MonoBehaviour
 
         if (leftHandItem == item)
         {
-            Debug.Log(leftHandItem +" " +  item);
+            Debug.Log(leftHandItem + " " + item);
             leftHandItem.Destroy();
             leftHandItem = null;
         }
@@ -190,7 +201,7 @@ public class PlayerHands : MonoBehaviour
         {
             rightHandItem.Destroy();
             rightHandItem = null;
-            
+
         }
     }
 }
