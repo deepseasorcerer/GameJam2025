@@ -188,7 +188,7 @@ MonoBehaviour:
   jumpForce: 10
   gravity: 6
   lookSpeed: 200
-  lookXLimit: 45
+  lookXLimit: 90
 --- !u!114 &6783614611224813589
 MonoBehaviour:
   m_ObjectHideFlags: 0
