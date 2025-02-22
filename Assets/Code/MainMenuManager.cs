@@ -6,6 +6,7 @@ public class MainMenuManager : MonoBehaviour
 {
     public Button startButton;
     public Button settingsButton;
+    public AudioSource startSound;
 
     void Start()
     {
@@ -17,6 +18,7 @@ public class MainMenuManager : MonoBehaviour
     private void StartGame()
     {
         Debug.Log("Start button clicked! Loading Game Scene...");
+        startSound.Play();
         SceneManager.LoadScene("MainGame"); // add first Level here, also change in build menu
     }
 

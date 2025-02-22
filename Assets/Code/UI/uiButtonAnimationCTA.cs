@@ -16,6 +16,9 @@ public class uibuttonanimationcta : MonoBehaviour, IPointerDownHandler, IPointer
     private bool isPressed = false;
     private bool isHovered = false;
 
+    public AudioSource clickSound;
+    public AudioSource hoverSound;
+
     void Start()
     {
         // Ensure triangles start hidden
@@ -39,6 +42,7 @@ public class uibuttonanimationcta : MonoBehaviour, IPointerDownHandler, IPointer
                  .setEase(LeanTweenType.easeOutQuad);
         LeanTween.moveLocalX(triangleRight.gameObject, triangleRightInitialPosition.x + trianglePressedDistance, animationDuration)
                  .setEase(LeanTweenType.easeOutQuad);
+        clickSound.Play();
     }
 
     // Called when the mouse button is released
@@ -96,6 +100,8 @@ public class uibuttonanimationcta : MonoBehaviour, IPointerDownHandler, IPointer
                  .setEase(LeanTweenType.easeOutQuad);
         LeanTween.moveLocalX(triangleRight.gameObject, triangleRightInitialPosition.x + triangleMoveDistance, animationDuration)
                  .setEase(LeanTweenType.easeOutQuad);
+
+        hoverSound.Play();
     }
 
     // Called when the mouse exits the button (hover effect)

@@ -8,6 +8,8 @@ public class uiButtonAnimationIcon : MonoBehaviour, IPointerEnterHandler, IPoint
     public float hoverScale = 1.1f;
     public float pressScale = 0.9f;
     public float animationDuration = 0.15f;
+    public AudioSource hoverSound;
+    public AudioSource clickSound;
 
     private Vector3 originalScale;
 
@@ -20,6 +22,7 @@ public class uiButtonAnimationIcon : MonoBehaviour, IPointerEnterHandler, IPoint
     {
         LeanTween.scale(buttonRect, originalScale * hoverScale, animationDuration)
                  .setEase(LeanTweenType.easeOutQuad);
+        hoverSound.Play();
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -38,5 +41,6 @@ public class uiButtonAnimationIcon : MonoBehaviour, IPointerEnterHandler, IPoint
     {
         LeanTween.scale(buttonRect, originalScale * hoverScale, animationDuration)
                  .setEase(LeanTweenType.easeOutQuad);
+        clickSound.Play();
     }
 }
