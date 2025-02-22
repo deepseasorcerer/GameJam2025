@@ -10,15 +10,13 @@ public class DoorController : MonoBehaviour
     
     private Vector3 leftDoorStartPos;
     private Vector3 rightDoorStartPos;
-    private GameObject leftDoor;
-    private GameObject rightDoor;
+    [SerializeField]private GameObject leftDoor;
+    [SerializeField]private GameObject rightDoor;
 
     private SoundManager _soundManager;
     
     private void Awake()
     {
-        leftDoor = transform.GetChild(1).gameObject;
-        rightDoor = transform.GetChild(0).gameObject;
         leftDoorStartPos = leftDoor.transform.position;
         rightDoorStartPos = rightDoor.transform.position;
     }
