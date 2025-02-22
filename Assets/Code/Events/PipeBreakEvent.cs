@@ -41,7 +41,7 @@ public class PipeBreakEvent: InteractableBase
     public void ActivateTask()
     {
         transform.localRotation = Quaternion.Euler(0, 180, 0); 
-        _soundManager.PlaySound("PowerOutage");
+        _soundManager.PlaySound("PipeBurst");
         isActive = true;
         isFixed = false;
         timeLeft = EventDuration;
@@ -54,7 +54,7 @@ public class PipeBreakEvent: InteractableBase
             isFixed = true;
             isActive = false;
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-            _soundManager.PlaySound("PowerOn");
+            _soundManager.PlaySound("PipeBang");
             Debug.Log("Power Outage event fixed");
         }
     }

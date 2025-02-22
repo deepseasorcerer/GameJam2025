@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 8356467498328342801}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.81, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -51,6 +51,7 @@ MonoBehaviour:
   isActive: 0
   requiredItem: Welder
   interactionCooldown: 0.1
+  radialIndicatorUi: {fileID: 0}
   GameEventName: PipeBreak
   eventType: 3
   EventDuration: 60

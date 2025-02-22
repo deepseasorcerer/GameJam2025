@@ -34,6 +34,10 @@ public class PowerOutageEvent : InteractableBase
                 FailedTask();
             }
         }
+        else
+        {
+            fixedBattery.SetActive(true);
+        }
     }
     
     public void FailedTask()
