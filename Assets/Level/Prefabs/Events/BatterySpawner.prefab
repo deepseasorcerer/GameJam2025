@@ -301,7 +301,8 @@ MonoBehaviour:
   isActive: 1
   requiredItem: 
   interactionCooldown: 0.1
-  batteryPrefab: {fileID: 0}
+  radialIndicatorUi: {fileID: 0}
+  batteryPrefab: {fileID: 2182379487151356534, guid: f16174c510bce1b449314b8e857acafb, type: 3}
   spawnPoint: {fileID: 8945475322392862174}
   spawnInterval: 6
 --- !u!135 &3881717816435988844

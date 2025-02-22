@@ -67,7 +67,6 @@ public class GameManager : MonoBehaviour
         {
             timeSinceCheckedEvents = 0f;
             var activeGECount = gameEventsInteractable.Count(x => x.isActive);
-            Debug.Log("Active GameEvents: " + activeGECount);
             if(activeGECount == 0)
             {
                 _musicManager.SetMusicIntensity(MusicManager.MusicIntensity.Low);
@@ -92,7 +91,6 @@ public class GameManager : MonoBehaviour
             return;
         }
         int eventIndex = Random.Range(0, nonActiveGe.Count);
-        //todo: Is there a better way? -Dork (either way not called much);
         nonActiveGe[eventIndex].TryGetComponent<AirLeakEvent>(out var airLeakEvent);
         if(airLeakEvent is not null && airLeakEvent.isActive == false)
         {
@@ -123,11 +121,7 @@ public class GameManager : MonoBehaviour
         {
             nonActiveGe[eventIndex].GetComponent<FuelThrustersEvent>().ActivateTask();
         }
-        
-        
-        
     }
-    
 }
 
 public enum GameEventType

@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor;
+using UnityEngine.UI;
 
 public abstract class InteractableBase : MonoBehaviour, IInteractable
 {
@@ -21,6 +22,17 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
     private Item usedItem;
 
     PlayerHands playerHands;
+
+    [SerializeField] private Image radialIndicatorUi = null;
+    
+    
+    private void Start()
+    {
+        if (radialIndicatorUi != null)
+        {
+            
+        }
+    }
     public void Interact(PlayerHands playerHands, Item usedItem = null)
     {
         this.playerHands = playerHands;
@@ -36,7 +48,6 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
         }
 
         lastInteractionTime = Time.time;
-        Debug.Log("Interacted");
         if (interactionType == InteractionType.Instant)
         {
             PerformInteraction();
@@ -46,16 +57,13 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
         }
         else if (interactionType == InteractionType.Hold)
         {
-
             if (isInteracting)
             {
                 return;
             }
             isInteracting = true;
             StartCoroutine(HoldInteraction());
-
         }
-
     }
 
     public void CancelInteraction()
@@ -63,6 +71,10 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
         isInteracting = false;
         StopAllCoroutines();
         OnInteractionCancelled();
+        if(radialIndicatorUi != null)
+        {
+            radialIndicatorUi.fillAmount = 0;
+        }
         interactionTimer = 0;
     }
 
@@ -72,6 +84,10 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
         {
             Debug.Log(interactionTimer);
             interactionTimer += Time.deltaTime;
+            if (radialIndicatorUi != null)
+            {
+                radialIndicatorUi.fillAmount = interactionTimer / holdTime;
+            }
             yield return null;
         }
 
@@ -79,6 +95,10 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
         {
             PerformInteraction();
             playerHands.RemoveItemFromHand(usedItem);
+            if(radialIndicatorUi != null)
+            {
+                radialIndicatorUi.fillAmount = 0;
+            }
             interactionTimer = 0;
         }
     }
@@ -88,10 +108,10 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
     {
         if (item?.itemName == requiredItem || requiredItem == "" || requiredItem == null)
         {
-            Debug.Log("ItemPresent");
+            //Debug.Log("ItemPresent");
             return true;
         }
-        Debug.Log("ItemNotPresent");
+        //Debug.Log("ItemNotPresent");
         return false;
     }
 

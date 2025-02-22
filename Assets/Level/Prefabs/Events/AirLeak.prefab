@@ -115,9 +115,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 0
   holdTime: 5
-  isActive: 1
+  isActive: 0
   requiredItem: SpaceTape
   interactionCooldown: 0.1
+  radialIndicatorUi: {fileID: 0}
   GameEventName: AirLeak
   eventType: 0
   EventDuration: 10
@@ -4932,7 +4933,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2353176859469783067}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3a0ce93b529e6a94389b45a8325e4200, type: 3}

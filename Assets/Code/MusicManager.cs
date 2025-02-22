@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class MusicManager : MonoBehaviour
@@ -28,6 +29,10 @@ public class MusicManager : MonoBehaviour
     private float fadeTime = 3f;
     
     private float volumnMax = .5f;
+
+    private bool inMainGame = false;
+    
+    private Scene scene;
     void Awake()
     { 
         if (_instance != null && _instance != this)
@@ -37,28 +42,47 @@ public class MusicManager : MonoBehaviour
         }
         
         _instance = this;
+        
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        
+        scene = SceneManager.GetActiveScene();
+        
         DontDestroyOnLoad(gameObject);
     }
     
     void Start()
     {
-        var scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
-        if(scene.name == "MainMenu")
+
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene2, LoadSceneMode mode)
+    {
+        if(scene2.name == "MainMenu")
         {
             MainMenuMusic.Play();
+            inMainGame = false;
+        } 
+        else if(scene2.name == "MainGame")
+        {
+            inMainGame = true;
         }
     }
     
     void Update()
     {
-        if (AudioSettings.dspTime >= songEndTime || !GameMusic[0].isPlaying)
+        if ((AudioSettings.dspTime >= songEndTime || !GameMusic[0].isPlaying) && inMainGame)
         {
             StartGameMusic();
             timeSinceMusicStarted = 0;
             SetMusicIntensity(currentIntensity);
         }
         timeSinceGameStarted += Time.deltaTime;
-        
     }
     
     public void StartGameMusic()

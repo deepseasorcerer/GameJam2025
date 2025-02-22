@@ -23,6 +23,7 @@ public class PipeBreakEvent: InteractableBase
     {
         if (isActive)
         {
+            
             timeLeft -= Time.deltaTime;
             if (timeLeft <= 0)
             {
@@ -39,6 +40,7 @@ public class PipeBreakEvent: InteractableBase
 
     public void ActivateTask()
     {
+        transform.localRotation = Quaternion.Euler(0, 180, 0); 
         _soundManager.PlaySound("PowerOutage");
         isActive = true;
         isFixed = false;
@@ -51,6 +53,7 @@ public class PipeBreakEvent: InteractableBase
         {
             isFixed = true;
             isActive = false;
+            transform.localRotation = Quaternion.Euler(0, 0, 0);
             _soundManager.PlaySound("PowerOn");
             Debug.Log("Power Outage event fixed");
         }
