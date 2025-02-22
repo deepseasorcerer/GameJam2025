@@ -14,7 +14,9 @@ public class AirLeakEvent : InteractableBase
     private AudioSource audioSource;
     
     [SerializeField] private GameObject fixedTape;
-    
+
+    public static event Action<string> airLeakEventChangedNarrative;
+
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -50,6 +52,7 @@ public class AirLeakEvent : InteractableBase
 
     public void ActivateTask()
     {
+        airLeakEventChangedNarrative?.Invoke("A breach on the ventilation system is occurring. Grab the avian adhesive to repair. \r\n...\r\nWhat? I'm 87% certain that's how it's pronounced.");
         isActive = true;
         isFixed = false;
         audioSource.enabled = true;

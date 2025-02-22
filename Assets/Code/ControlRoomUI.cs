@@ -10,14 +10,12 @@ public class ControlRoomUI : MonoBehaviour
 
     private void OnEnable()
     {
-        if (oxygenSupply != null)
-            oxygenSupply.OxygenChanged += UpdateOxygenUI;
+        interactableO2Supply.OxygenChanged += UpdateOxygenUI;
     }
 
     private void OnDisable()
     {
-        if (oxygenSupply != null)
-            oxygenSupply.OxygenChanged -= UpdateOxygenUI;
+        interactableO2Supply.OxygenChanged -= UpdateOxygenUI;
     }
 
     private void UpdateOxygenUI(float currentOxygen)

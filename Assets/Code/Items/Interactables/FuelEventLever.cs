@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class FuelEventLever : InteractableBase
@@ -6,6 +7,7 @@ public class FuelEventLever : InteractableBase
     private bool isActiveLever = false;
     private bool isEventActive = false;
     [SerializeField] FuelThrustersEvent fuelThrustersEvent;
+    public static event Action<string> FuelLeverChangedNarrative;
     protected override void PerformInteraction()
     {
         if(!isEventActive)
@@ -31,6 +33,7 @@ public class FuelEventLever : InteractableBase
     public void ActivateLever()
     {
         Debug.Log("LeverActivated");
+        FuelLeverChangedNarrative?.Invoke("Well Done!");
         isActiveLever = true;
     }
 

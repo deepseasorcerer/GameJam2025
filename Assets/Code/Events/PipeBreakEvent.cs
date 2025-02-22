@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 
 public class PipeBreakEvent: InteractableBase
@@ -9,6 +10,8 @@ public class PipeBreakEvent: InteractableBase
     [SerializeField] private bool isFixed = false;
     public float timeLeft;
     private SoundManager _soundManager;
+
+    public static event Action<string> pipeBreakEventChangedNarrative;
 
     private void Start()
     {
@@ -40,6 +43,7 @@ public class PipeBreakEvent: InteractableBase
 
     public void ActivateTask()
     {
+        pipeBreakEventChangedNarrative?.Invoke("Pluming certification detected. You are able to repair our pipe systems. ");
         transform.localRotation = Quaternion.Euler(0, 180, 0); 
         _soundManager.PlaySound("PipeBurst");
         isActive = true;

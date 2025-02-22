@@ -8,24 +8,35 @@ public class interactableO2Supply : InteractableBase
     [SerializeField] float O2LeftAmount = O2MaxCapacity;
     [SerializeField] float O2LossSpeedPerHalfSecond = 0.1f;
 
-    public event Action<float> OxygenChanged;
+    public static event Action<float> OxygenChanged;
+
+    public static event Action<string> OxygenChangedNarrative;
+
+    private bool hasTriggeredLowOxygenNarrative = false;
+
 
     private void Start()
     {
-        // Optionally, notify UI immediately about the starting value.
         OxygenChanged?.Invoke(O2LeftAmount);
         StartCoroutine(OxygenDepletionCoroutine());
+
+    }
+
+    private void OnDestroy()
+    {
+
     }
 
     protected override void PerformInteraction()
     {
+
         O2LeftAmount += 20;
-        // Clamp if needed
         if (O2LeftAmount > O2MaxCapacity)
             O2LeftAmount = O2MaxCapacity;
 
-        // Notify UI after the change.
         OxygenChanged?.Invoke(O2LeftAmount);
+        OxygenChangedNarrative?.Invoke("Adequate. Only 487 internal gas cycles to go.\r\nI told them to automate it. Something about LAH800 malfunctions.");
+
     }
 
     private IEnumerator OxygenDepletionCoroutine()
@@ -33,9 +44,17 @@ public class interactableO2Supply : InteractableBase
         while (O2LeftAmount > 0)
         {
             O2LeftAmount -= O2LossSpeedPerHalfSecond;
-            // Notify subscribers every time the value updates.
             OxygenChanged?.Invoke(O2LeftAmount);
+            if (O2LeftAmount <= 30 && !hasTriggeredLowOxygenNarrative)
+            {
+                OxygenChangedNarrative?.Invoke("The green ones are compressed oxygen. Of course that makes sense. Re-calibrating sensors... Are o2 levels critically low?\r\nJust focus on grabbing the green one. Not orange. That's compressed custard.");
+                hasTriggeredLowOxygenNarrative = true;
+            }
 
+            if (O2LeftAmount > 35)
+            {
+                hasTriggeredLowOxygenNarrative = false;
+            }
             yield return new WaitForSeconds(0.5f);
         }
     }

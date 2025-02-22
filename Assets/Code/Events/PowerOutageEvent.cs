@@ -13,7 +13,7 @@ public class PowerOutageEvent : InteractableBase
     [SerializeField] private GameObject fixedBattery;
     public float timeLeft;
     private SoundManager _soundManager;
-
+    public static event Action<string> powerOutageEventChangedNarrative;
     private void Start()
     {
         _soundManager = SoundManager.Instance;
@@ -48,6 +48,7 @@ public class PowerOutageEvent : InteractableBase
 
     public void ActivateTask()
     {
+        powerOutageEventChangedNarrative?.Invoke("My ocular receptors are dark vision compatible. This is a human frailty.\r\nThe switch is where you would expect.");
         _soundManager.PlaySound("PowerOutage");
         fixedBattery.SetActive(false);
         isActive = true;

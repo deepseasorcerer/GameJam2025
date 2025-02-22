@@ -15,7 +15,7 @@ public class TypeWriterEffect : MonoBehaviour
         tmpText = GetComponent<TMP_Text>(); // Get the TMP component
         fullText = tmpText.text; // Store the initial text
         tmpText.text = ""; // Clear text before typing effect
-        StartTyping(); // Start effect
+        //StartTyping(); // Start effect
     }
 
     private void StartTyping()
@@ -29,6 +29,11 @@ public class TypeWriterEffect : MonoBehaviour
             StopCoroutine(typingCoroutine); // Stop current effect if running
         fullText = newText; // Set new text
         StartTyping(); // Start effect
+    }
+
+    public void StopCoroutine()
+    {
+        StopCoroutine(ShowText());
     }
 
     IEnumerator ShowText()
