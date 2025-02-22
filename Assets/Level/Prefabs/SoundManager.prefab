@@ -47,7 +47,7 @@ MonoBehaviour:
   sounds:
   - name: Door
     clip: {fileID: 8300000, guid: 86d60441270ec2046bc87fec546bb4ab, type: 3}
-    volume: 0.726
+    volume: 0.519
     loop: 0
     pitch: 1
     volumeRandomness: 0
@@ -59,3 +59,45 @@ MonoBehaviour:
     pitch: 1.007
     volumeRandomness: 0
     pitchRandomness: 0
+  - name: Thoop
+    clip: {fileID: 8300000, guid: 28fe4a71df09f254296fe61cbef68797, type: 3}
+    volume: 0.927
+    loop: 0
+    pitch: 1.007
+    volumeRandomness: 0
+    pitchRandomness: 0
+  - name: PowerOutage
+    clip: {fileID: 8300000, guid: 0687c94bdcb803f4e95d15e44205576e, type: 3}
+    volume: 0.927
+    loop: 0
+    pitch: 1.007
+    volumeRandomness: 0
+    pitchRandomness: 0
+  - name: PowerOn
+    clip: {fileID: 8300000, guid: d72525f82a948df47902d27124c30a22, type: 3}
+    volume: 0.927
+    loop: 0
+    pitch: 1.007
+    volumeRandomness: 0
+    pitchRandomness: 0
+  - name: Switch
+    clip: {fileID: 8300000, guid: 45fdaf5086a91a04bb09fc3e782a0826, type: 3}
+    volume: 0.927
+    loop: 0
+    pitch: 1.007
+    volumeRandomness: 0
+    pitchRandomness: 0
+  - name: PowerOn
+    clip: {fileID: 8300000, guid: 02894418ca0f1b443b1f6251e7c5de16, type: 3}
+    volume: 0.927
+    loop: 0
+    pitch: 1.007
+    volumeRandomness: 0
+    pitchRandomness: 0
+  - name: Step
+    clip: {fileID: 8300000, guid: 6512bfbb1e5c75349b0de56288164d13, type: 3}
+    volume: 0.927
+    loop: 0
+    pitch: 1.007
+    volumeRandomness: 0.085
+    pitchRandomness: 0.112
