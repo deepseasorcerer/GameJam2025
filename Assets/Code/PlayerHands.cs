@@ -1,5 +1,11 @@
-using NUnit.Framework;
+using System;using NUnit.Framework;
 using UnityEngine;
+
+public enum Hand
+{
+    Left,
+    Right
+}
 
 public class PlayerHands : MonoBehaviour
 {
@@ -63,15 +69,15 @@ public class PlayerHands : MonoBehaviour
 
     private void ProcessLeftClick()
     {
-        PerformInteraction(KeyCode.Mouse0, ref leftHandItem, leftHand);
+        PerformInteraction(KeyCode.Mouse0, ref leftHandItem, leftHand, Hand.Left);
     }
 
     private void ProcessRightClick()
     {
-        PerformInteraction(KeyCode.Mouse1, ref rightHandItem, rightHand);
+        PerformInteraction(KeyCode.Mouse1, ref rightHandItem, rightHand, Hand.Right);
     }
 
-    private void PerformInteraction(KeyCode key, ref Item handItem, Transform handTransform)
+    private void PerformInteraction(KeyCode key, ref Item handItem, Transform handTransform, Hand hand)
     {
         Debug.DrawRay(mainCamera.transform.position, mainCamera.transform.forward * pickupRange, Color.red, pickupRange);
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
@@ -110,7 +116,7 @@ public class PlayerHands : MonoBehaviour
                 Item hitItem = hit.collider.GetComponent<Item>();
                 if (hitItem != null && hitItem != leftHandItem && hitItem != rightHandItem)
                 {
-                    AddItemToHand(hitItem, ref handItem, handTransform);
+                    AddItemToHand(hitItem, ref handItem, handTransform, hand);
                 }
             }
             else if (hit.collider.CompareTag("Interactable"))
@@ -147,7 +153,7 @@ public class PlayerHands : MonoBehaviour
         }
     }
 
-    private void AddItemToHand(Item item, ref Item handItem, Transform handTransform)
+    private void AddItemToHand(Item item, ref Item handItem, Transform handTransform, Hand hand)
     {
         if (handItem != null)
         {
@@ -155,6 +161,7 @@ public class PlayerHands : MonoBehaviour
         }
         handItem = item; // Assign to correct hand variable
         item.isInHands = true;
+        handItem.Hand = hand;
         timeSinceInteraction = 0f;
         Debug.Log("Picked up " + item.name);
 
@@ -193,15 +200,20 @@ public class PlayerHands : MonoBehaviour
 
         if (leftHandItem == item)
         {
-            Debug.Log(leftHandItem + " " + item);
-            leftHandItem.Destroy();
-            leftHandItem = null;
+            if(item.Destructable)
+            {
+                leftHandItem.Destroy();
+                leftHandItem = null;
+            }
         }
         else if (rightHandItem == item)
         {
-            rightHandItem.Destroy();
-            rightHandItem = null;
-
+            if(item.Destructable)
+            {
+                rightHandItem.Destroy();
+                rightHandItem = null;
+            }
         }
     }
 }
+

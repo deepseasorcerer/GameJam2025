@@ -115,9 +115,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactionType: 0
   holdTime: 5
-  isActive: 1
+  isActive: 0
   requiredItem: SpaceTape
   interactionCooldown: 0.1
+  radialIndicatorUi: {fileID: 0}
   GameEventName: AirLeak
   eventType: 0
   EventDuration: 10

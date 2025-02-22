@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Item : MonoBehaviour
 {
     [SerializeField]
     public string itemName;
 
+    public bool Destructable = true;
+    public Hand Hand { get; set; }
     public bool isInHands = false;
     public virtual void Use()
     {
@@ -28,6 +31,9 @@ public class Item : MonoBehaviour
 
     public virtual void Destroy()
     {
-        Destroy(this.gameObject);
+        if (Destructable)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
