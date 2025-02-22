@@ -59,7 +59,7 @@ public class Fire : MonoBehaviour
 
         transform.position = new Vector3(transform.position.x, transform.position.y - heightChange / 2.0f, transform.position.z);
 
-        if (initialScale.y <= 0.06f)
+        if (initialScale.y <= 0.15f)
         {
             fireEvent?.DestroyedFire();
             Destroy(gameObject);

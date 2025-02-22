@@ -8,6 +8,12 @@ public class FuelEventLever : InteractableBase
     [SerializeField] FuelThrustersEvent fuelThrustersEvent;
     protected override void PerformInteraction()
     {
+        if(!isEventActive)
+        {
+            Debug.Log("NotActive");
+            return;
+        }
+
         if (!isActiveLever)
         {
             Debug.Log("We need more fuel!");
@@ -24,6 +30,7 @@ public class FuelEventLever : InteractableBase
 
     public void ActivateLever()
     {
+        Debug.Log("LeverActivated");
         isActiveLever = true;
     }
 

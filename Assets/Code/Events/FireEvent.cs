@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class FireEvent : InteractableBase
 {
+    [SerializeField] string GameEventName = "Fire";
+    [SerializeField] private GameEventType eventType = GameEventType.Fire;
     [SerializeField] private List<GameObject> firePoints;
     [SerializeField] private GameObject firePrefab;
 
@@ -18,16 +20,19 @@ public class FireEvent : InteractableBase
 
     public void ActivateTask()
     {
+        Debug.Log("Fire has started");
         ActivateFire();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.O))
         {
             ActivateTask();
         }
     }
+
+
 
     protected override void PerformInteraction()
     {

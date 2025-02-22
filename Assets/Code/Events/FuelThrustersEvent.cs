@@ -21,10 +21,16 @@ public class FuelThrustersEvent : InteractableBase
                 FailedTask();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            ActivateTask();
+        }
     }
 
     public void ActivateTask()
     {
+        Debug.Log("FuelEvent Needed");
         fuelEventLever.ActivateEvent();
         isActive = true;
         timeLeft = EventDuration;
