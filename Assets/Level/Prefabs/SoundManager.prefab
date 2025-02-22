@@ -101,3 +101,17 @@ MonoBehaviour:
     pitch: 1.007
     volumeRandomness: 0.085
     pitchRandomness: 0.112
+  - name: PipeBang
+    clip: {fileID: 8300000, guid: 358dd8f3d18583f408f6f6c19bfa7a10, type: 3}
+    volume: 0.927
+    loop: 0
+    pitch: 1.007
+    volumeRandomness: 0.085
+    pitchRandomness: 0.112
+  - name: PipeBurst
+    clip: {fileID: 8300000, guid: e3cdcc3f0b6f92643aa0c7b31115c4c0, type: 3}
+    volume: 0.927
+    loop: 0
+    pitch: 1.007
+    volumeRandomness: 0.085
+    pitchRandomness: 0.112
