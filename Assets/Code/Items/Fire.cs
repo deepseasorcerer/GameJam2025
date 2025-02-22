@@ -5,10 +5,31 @@ public class Fire : MonoBehaviour
     public float extinguishRate = 0.0001f;
     private Vector3 initialScale; // Store the initial scale of the parent
     private bool canReduce = false;
+    [SerializeField] private float eventDuration = 50f;
+    float timeLeft;
+    FireEvent fireEvent;
 
     private void Start()
     {
+        timeLeft = eventDuration;
         initialScale = transform.localScale; // Get the initial scale of the parent
+    }
+
+    public void SetFireEvent(FireEvent fireEvent)
+    {
+        this.fireEvent = fireEvent;
+    }
+
+
+    void Update()
+    {
+
+        timeLeft -= Time.deltaTime;
+        if (timeLeft <= 0)
+        {
+            FailedTask();
+        }
+        
     }
 
     private void OnParticleCollision(GameObject other)
@@ -38,9 +59,16 @@ public class Fire : MonoBehaviour
 
         transform.position = new Vector3(transform.position.x, transform.position.y - heightChange / 2.0f, transform.position.z);
 
-        if (initialScale.y <= 0.05f)
+        if (initialScale.y <= 0.06f)
         {
+            fireEvent?.DestroyedFire();
             Destroy(gameObject);
+
         }
+    }
+
+    private void FailedTask()
+    {
+
     }
 }
