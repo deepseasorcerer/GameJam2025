@@ -5,14 +5,15 @@ using UnityEngine.UI;
 public class SettingsMenuManager : MonoBehaviour
 {
     public Slider mouseSensitivitySlider;
+    public Slider volumeSlider;
 
     private void Start()
     {
-        // Load saved sensitivity
-        mouseSensitivitySlider.value = PlayerPrefs.GetFloat("MouseSensitivity", 5f);
+        mouseSensitivitySlider.value = PlayerPrefs.GetFloat("MouseSensitivity", 1f);
+        volumeSlider.value = PlayerPrefs.GetFloat("GameVolume", 1f);
 
-        // Add listener for slider changes
         mouseSensitivitySlider.onValueChanged.AddListener(SetMouseSensitivity);
+        volumeSlider.onValueChanged.AddListener(SetGameVolume);
     }
 
     private void SetMouseSensitivity(float value)
@@ -21,8 +22,16 @@ public class SettingsMenuManager : MonoBehaviour
         PlayerPrefs.SetFloat("MouseSensitivity", value);
     }
 
+    private void SetGameVolume(float value)
+    {
+        Debug.Log($"Game Volume set to: {value}");
+        AudioListener.volume = value; // Adjust global volume
+        PlayerPrefs.SetFloat("GameVolume", value);
+        PlayerPrefs.Save();
+    }
+
     public void BackToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
-    }
+    }   
 }

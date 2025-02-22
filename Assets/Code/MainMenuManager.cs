@@ -17,7 +17,7 @@ public class MainMenuManager : MonoBehaviour
     private void StartGame()
     {
         Debug.Log("Start button clicked! Loading Game Scene...");
-        SceneManager.LoadScene("Level"); // add first Level here, also change in build menu
+        SceneManager.LoadScene("MainGame"); // add first Level here, also change in build menu
     }
 
     // Opens the settings menu with log
