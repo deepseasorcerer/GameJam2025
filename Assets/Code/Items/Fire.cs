@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Fire : MonoBehaviour
 {
@@ -63,6 +64,6 @@ public class Fire : MonoBehaviour
 
     private void FailedTask()
     {
-
+        SceneManager.LoadScene("DefeatScreen");
     }
 }

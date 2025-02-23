@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class interactableO2Supply : InteractableBase
 {
@@ -59,7 +60,14 @@ public class interactableO2Supply : InteractableBase
             }
             yield return new WaitForSeconds(0.5f);
         }
+
+        if(O2LeftAmount < 0)
+        {
+            SceneManager.LoadScene("DefeatScreen");
+        }
     }
+
+    
 
 
 }
