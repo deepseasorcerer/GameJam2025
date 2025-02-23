@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 [System.Serializable]
@@ -46,8 +47,7 @@ public class AirLeakEvent : InteractableBase
     {
         isActive = false;
         StopParticleSystem();
-        Debug.Log("Air leak event failed");
-        //TODO Failed Screen
+        SceneManager.LoadScene("DefeatScreen");
     }
 
     public void ActivateTask()

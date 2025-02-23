@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class PipeBreakEvent: InteractableBase
@@ -38,7 +39,7 @@ public class PipeBreakEvent: InteractableBase
     public void FailedTask()
     {
         isActive = false;
-        Debug.Log("Pipebreak event failed");
+        SceneManager.LoadScene("DefeatScreen");
     }
 
     public void ActivateTask()
