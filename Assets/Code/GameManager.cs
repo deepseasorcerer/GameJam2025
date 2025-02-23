@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -46,7 +47,7 @@ public class GameManager : MonoBehaviour
         timeElapsed += Time.deltaTime;
         if(timeElapsed >= GameLength)
         {
-            Debug.Log("Winner!");
+            SceneManager.LoadScene("VictoryScreen");
         }
         timeSinceLastEvent += Time.deltaTime;
         if(timeSinceLastEvent >= timeBetweenEvents)
