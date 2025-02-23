@@ -71,16 +71,11 @@ public class GameManager : MonoBehaviour
             {
                 _musicManager.SetMusicIntensity(MusicManager.MusicIntensity.Low);
             }
-            if(activeGECount == 1)
-            {
-                _musicManager.SetMusicIntensity(MusicManager.MusicIntensity.Medium);
-            }
-            if(activeGECount >= 2)
+            if(activeGECount >= 1)
             {
                 _musicManager.SetMusicIntensity(MusicManager.MusicIntensity.High);
             }
         }
-        
     }
     private void StartRandomEvent()
     {

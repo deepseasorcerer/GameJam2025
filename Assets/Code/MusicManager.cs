@@ -14,8 +14,7 @@ public class MusicManager : MonoBehaviour
     public enum MusicIntensity
     {
         Low = 0,
-        Medium = 1,
-        High = 2
+        High = 1,
     }
     
     public MusicIntensity currentIntensity = MusicIntensity.Low;
@@ -90,12 +89,11 @@ public class MusicManager : MonoBehaviour
         MainMenuMusic.Stop();
         Double startTime = AudioSettings.dspTime + 2d;
         timeSinceMusicStarted = 0;
-        GameMusic[0].PlayScheduled(startTime + 2d);
         GameMusic[0].volume = volumnMax;
-        GameMusic[1].PlayScheduled(startTime + 2d);
+        GameMusic[0].Play();
         GameMusic[1].volume = 0;
-        GameMusic[2].PlayScheduled(startTime + 2d);
-        GameMusic[2].volume = 0;
+        GameMusic[1].Play();
+        
         songEndTime = startTime + (60d / gameMusicBpm) * GameMusic[0].clip.samples -4d;
     }
     public void SetMusicIntensity(MusicIntensity intensity)
@@ -104,25 +102,17 @@ public class MusicManager : MonoBehaviour
         {
             return;
         }
-        //Debug.Log("GameMusic0:"+GameMusic[0].isPlaying + " " + GameMusic[0].volume);
-        //Debug.Log("GameMusic1:"+GameMusic[1].isPlaying + " " + GameMusic[1].volume);
-        //Debug.Log("GameMusic2:"+GameMusic[2].isPlaying + " " + GameMusic[2].volume);
+        Debug.Log("GameMusic0:"+GameMusic[0].isPlaying + " " + GameMusic[0].volume);
+        Debug.Log("GameMusic1:"+GameMusic[1].isPlaying + " " + GameMusic[1].volume);
         switch (intensity)
         {
             case MusicIntensity.Low:
                 StartCoroutine(FadeOutMusic(GameMusic[1]));
-                StartCoroutine(FadeOutMusic(GameMusic[2]));
                 StartCoroutine(FadeInMusic(GameMusic[0]));
-                break;
-            case MusicIntensity.Medium:
-                StartCoroutine(FadeOutMusic(GameMusic[0]));
-                StartCoroutine(FadeOutMusic(GameMusic[2]));
-                StartCoroutine(FadeInMusic(GameMusic[1]));
                 break;
             case MusicIntensity.High:
                 StartCoroutine(FadeOutMusic(GameMusic[0]));
-                StartCoroutine(FadeOutMusic(GameMusic[1]));
-                StartCoroutine(FadeInMusic(GameMusic[2]));
+                StartCoroutine(FadeInMusic(GameMusic[1]));
                 break;
         }
     }
