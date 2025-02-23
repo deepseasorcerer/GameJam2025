@@ -111,11 +111,6 @@ public class GameManager : MonoBehaviour
         {
             nonActiveGe[eventIndex].GetComponent<PipeBreakEvent>().ActivateTask();
         }
-        nonActiveGe[eventIndex].TryGetComponent<RedirectShipEvent>(out var redirectShipEvent);
-        if(redirectShipEvent is not null)
-        {
-            nonActiveGe[eventIndex].GetComponent<RedirectShipEvent>().ActivateTask();
-        }
         nonActiveGe[eventIndex].TryGetComponent<FuelThrustersEvent>(out var fuelThrustersEvent);
         if(fuelThrustersEvent)
         {
@@ -130,6 +125,5 @@ public enum GameEventType
     Fire,
     PowerOutage,
     PipeBreak,
-    RedirectShip,
     FuelThrusters
 }
