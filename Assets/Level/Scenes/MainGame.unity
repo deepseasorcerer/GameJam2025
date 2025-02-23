@@ -7546,7 +7546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8978435638955531280, guid: cde8b5eb269019448bed2cb7502d51ec, type: 3}
       propertyPath: gameEvents.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8978435638955531280, guid: cde8b5eb269019448bed2cb7502d51ec, type: 3}
       propertyPath: 'gameEvents.Array.data[0]'

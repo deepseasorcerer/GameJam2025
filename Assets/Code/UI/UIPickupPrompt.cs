@@ -16,20 +16,16 @@ public class PickupPrompt : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerHands = player.GetComponent<PlayerHands>();
-
         if (pickupUIPrefab == null)
         {
             Debug.LogError("Pickup UI Prefab not found!");
         }
-
     }
 
     void Update()
     {
         if (player == null || pickupUIPrefab == null) return;
-
         float distance = Vector3.Distance(transform.position, player.position);
-
         if (distance <= displayDistance)
         {
             ShowUI();
