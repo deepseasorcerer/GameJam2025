@@ -58,9 +58,8 @@ public class PickupPrompt : MonoBehaviour
             pickupUIInstance = Instantiate(pickupUIPrefab, transform.position + uiOffset, Quaternion.identity);
             pickupUIInstance.transform.SetParent(transform); // Parent to object
             pickupUIInstance.transform.rotation = Quaternion.identity; //Reset the rotation to make sure its not flipped;
-            // Optionally, adjust the prefab's local rotation if it’s still flipped
+            // Optionally, adjust the prefab's local rotation if itï¿½s still flipped
             pickupUIInstance.transform.localRotation = Quaternion.Euler(0, 0f, 0); // Adjust as needed
-            Debug.Log("Prompt Spawned");
         }
     }
 
