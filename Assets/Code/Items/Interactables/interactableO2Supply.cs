@@ -14,6 +14,8 @@ public class interactableO2Supply : InteractableBase
 
     private bool hasTriggeredLowOxygenNarrative = false;
 
+    [SerializeField] AudioSource o2Sound;
+
 
     private void Start()
     {
@@ -29,7 +31,7 @@ public class interactableO2Supply : InteractableBase
 
     protected override void PerformInteraction()
     {
-
+        o2Sound.Play();
         O2LeftAmount += 20;
         if (O2LeftAmount > O2MaxCapacity)
             O2LeftAmount = O2MaxCapacity;
