@@ -26,6 +26,8 @@ public class PlayerHands : MonoBehaviour
 
     private Camera mainCamera;
 
+    public bool isInHand = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -159,6 +161,8 @@ public class PlayerHands : MonoBehaviour
         {
             return;
         }
+
+        isInHand = true;
         handItem = item; // Assign to correct hand variable
         item.isInHands = true;
         handItem.Hand = hand;
@@ -187,6 +191,7 @@ public class PlayerHands : MonoBehaviour
             itemRb.useGravity = true;
             itemRb.isKinematic = false;
         }
+        isInHand = false;
         handItem.isInHands = false;
         handItem.transform.SetParent(null);
         handItem = null;

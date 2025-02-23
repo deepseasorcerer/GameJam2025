@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3511107427674046865}
   - component: {fileID: 5254694389238897991}
   - component: {fileID: 5317911562600478297}
+  - component: {fileID: 3508590796855602316}
   m_Layer: 0
   m_Name: SpaceTape
   m_TagString: Item
@@ -121,6 +122,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &3508590796855602316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945450813809578021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bce73b7ffe73624587f73c88121be1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupUIPrefab: {fileID: 7151161589978268945, guid: c454b24390c66044295d65367179d7fc, type: 3}
+  displayDistance: 3
+  uiOffset: {x: 0, y: 0.7, z: 0}
+  playerHands: {fileID: 0}
 --- !u!1001 &7912405408306062340
 PrefabInstance:
   m_ObjectHideFlags: 0

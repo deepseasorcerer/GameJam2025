@@ -4955,6 +4955,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 86b8c623b1ad3b5469bee7b331c542ec, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5631034292512210071}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 86b8c623b1ad3b5469bee7b331c542ec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6381840070733121997}
   m_SourcePrefab: {fileID: 100100000, guid: 86b8c623b1ad3b5469bee7b331c542ec, type: 3}
 --- !u!4 &8345663690371061164 stripped
 Transform:
@@ -5052,3 +5055,18 @@ MonoBehaviour:
   Destructable: 1
   isInHands: 0
   foamParticles: {fileID: 3663028066176109181}
+--- !u!114 &6381840070733121997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8690276315842023190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bce73b7ffe73624587f73c88121be1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupUIPrefab: {fileID: 7151161589978268945, guid: c454b24390c66044295d65367179d7fc, type: 3}
+  displayDistance: 2
+  uiOffset: {x: 0, y: 0.7, z: 0}

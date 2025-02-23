@@ -777,6 +777,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7375847983326058355, guid: 09754d7c71568d84a977d5f03ff36a73, type: 3}
+      propertyPath: lookSpeed
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1385,6 +1389,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 582929753}
     m_Modifications:
+    - target: {fileID: 6381840070733121997, guid: ebf3aaabd93bceb4994b5a1e3cc2f981, type: 3}
+      propertyPath: uiOffset.y
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 8345663690371061164, guid: ebf3aaabd93bceb4994b5a1e3cc2f981, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.765931
@@ -3687,11 +3695,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1546329787550098181, guid: 570ebd5442248a246b70b464186fafa9, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386134795539725003, guid: 570ebd5442248a246b70b464186fafa9, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5264151
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386134795539725003, guid: 570ebd5442248a246b70b464186fafa9, type: 3}
+      propertyPath: m_Color.g
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3386134795539725003, guid: 570ebd5442248a246b70b464186fafa9, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8311294
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386134795539725003, guid: 570ebd5442248a246b70b464186fafa9, type: 3}
       propertyPath: m_FillAmount
-      value: 0
+      value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726963266787946228, guid: 570ebd5442248a246b70b464186fafa9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870925443081847643, guid: 570ebd5442248a246b70b464186fafa9, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5379227893233440922, guid: 570ebd5442248a246b70b464186fafa9, type: 3}
       propertyPath: m_Pivot.x

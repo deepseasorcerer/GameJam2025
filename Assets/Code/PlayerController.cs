@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
         playerCamera = Camera.main;
 
         // Load mouse sensitivity
-        lookSpeed = PlayerPrefs.GetFloat("MouseSensitivity", 5f) * 80f; // Scale for better control
+        lookSpeed = PlayerPrefs.GetFloat("MouseSensitivity", 5f) * 800f; // Scale for better control
         Debug.Log($"Mouse Sensitivity Applied: {lookSpeed}");
     }
 

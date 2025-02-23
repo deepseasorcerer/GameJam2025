@@ -74,12 +74,14 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
         if(radialIndicatorUi != null)
         {
             radialIndicatorUi.fillAmount = 0;
+            HideHoldPrompt();
         }
         interactionTimer = 0;
     }
 
     private IEnumerator HoldInteraction()
     {
+        ShowHoldPrompt();
         while (isInteracting && interactionTimer < holdTime)
         {
             Debug.Log(interactionTimer);
@@ -88,6 +90,9 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
             {
                 radialIndicatorUi.fillAmount = interactionTimer / holdTime;
             }
+
+
+
             yield return null;
         }
 
@@ -117,4 +122,14 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
 
     protected abstract void PerformInteraction();
     protected virtual void OnInteractionCancelled() { }
+
+    private void ShowHoldPrompt()
+    {
+        radialIndicatorUi.gameObject.SetActive(true);
+    }
+
+    private void HideHoldPrompt()
+    {
+        radialIndicatorUi.gameObject.SetActive(false);
+    }
 }

@@ -9874,6 +9874,7 @@ GameObject:
   - component: {fileID: 6778648199004344294}
   - component: {fileID: 6067477962682814602}
   - component: {fileID: 2063100036912186751}
+  - component: {fileID: 6547830171481240624}
   - component: {fileID: 1465158799762492537}
   - component: {fileID: 6447948854293417207}
   m_Layer: 0
@@ -9965,6 +9966,22 @@ MonoBehaviour:
   Destructable: 0
   isInHands: 0
   flame: {fileID: 2463710933621371646}
+--- !u!114 &6547830171481240624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5439675236716246805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bce73b7ffe73624587f73c88121be1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupUIPrefab: {fileID: 7151161589978268945, guid: c454b24390c66044295d65367179d7fc, type: 3}
+  displayDistance: 3
+  uiOffset: {x: 0, y: 0.7, z: 0}
+  playerHands: {fileID: 0}
 --- !u!136 &1465158799762492537
 CapsuleCollider:
   m_ObjectHideFlags: 0
