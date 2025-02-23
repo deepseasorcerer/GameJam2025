@@ -47,6 +47,7 @@ public class NarrativeUI : MonoBehaviour
         PipeBreakEvent.pipeBreakEventChangedNarrative += ChangeTextDialogueBox;
         FuelEventLever.FuelLeverChangedNarrative += ChangeTextDialogueBox;
         FireExtinguisher.fireExtinguisherCallChangedNarrative += ChangeTextDialogueBox;
+        PowerOutageEvent.powerOutageEventChangedNarrative += ChangeTextDialogueBox;
     }
 
     private void OnDisable()
@@ -58,6 +59,7 @@ public class NarrativeUI : MonoBehaviour
         PipeBreakEvent.pipeBreakEventChangedNarrative -= ChangeTextDialogueBox;
         FuelEventLever.FuelLeverChangedNarrative -= ChangeTextDialogueBox;
         FireExtinguisher.fireExtinguisherCallChangedNarrative -= ChangeTextDialogueBox;
+        PowerOutageEvent.powerOutageEventChangedNarrative -= ChangeTextDialogueBox;
     }
 
     private void Start()
@@ -78,11 +80,11 @@ public class NarrativeUI : MonoBehaviour
         if (narrativeCoroutine != null)
         {
             StopCoroutine(narrativeCoroutine);
-            typeWritterEffect.StopCoroutine();
+            //typeWritterEffect.StopTyping();
         }
 
         narrativeCoroutine = StartCoroutine(NarrativeCoruotine(delay,fadeInDuration));
-        typeWritterEffect.ResetAndStart(dialogueText.text);
+        //typeWritterEffect.ResetAndStart(dialogueText.text);
     }
 
     IEnumerator NarrativeCoruotine(float waitTime, float duration)

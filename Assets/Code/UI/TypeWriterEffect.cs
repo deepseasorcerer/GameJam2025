@@ -12,33 +12,37 @@ public class TypeWriterEffect : MonoBehaviour
 
     void Start()
     {
-        tmpText = GetComponent<TMP_Text>(); // Get the TMP component
+        tmpText = GetComponent<TMP_Text>(); // Get TMP component
         fullText = tmpText.text; // Store the initial text
         tmpText.text = ""; // Clear text before typing effect
-        //StartTyping(); // Start effect
-    }
-
-    private void OnDisable()
-    {
-        StopAllCoroutines();
     }
 
     private void StartTyping()
     {
+        if (typingCoroutine != null) StopCoroutine(typingCoroutine); // Stop any ongoing effect
         typingCoroutine = StartCoroutine(ShowText());
     }
 
     public void ResetAndStart(string newText)
     {
         if (typingCoroutine != null)
-            StopCoroutine(typingCoroutine); // Stop current effect if running
+        {
+            StopCoroutine(typingCoroutine); // Stop the currently running coroutine
+            typingCoroutine = null; // Reset reference
+        }
+
+        tmpText.text = ""; // Clear text before typing effect
         fullText = newText; // Set new text
         StartTyping(); // Start effect
     }
 
-    public void StopCoroutine()
+    public void StopTyping() // Renamed to avoid Unity confusion
     {
-        StopCoroutine(ShowText());
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
+        }
     }
 
     IEnumerator ShowText()
@@ -49,5 +53,6 @@ public class TypeWriterEffect : MonoBehaviour
             tmpText.text = currentText;
             yield return new WaitForSeconds(delay);
         }
+        typingCoroutine = null; // Reset reference when finished
     }
 }

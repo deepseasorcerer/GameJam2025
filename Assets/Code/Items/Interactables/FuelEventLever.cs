@@ -13,12 +13,13 @@ public class FuelEventLever : InteractableBase
         if(!isEventActive)
         {
             Debug.Log("NotActive");
+            FuelLeverChangedNarrative?.Invoke("It's not time for the boost. At least you tried");
             return;
         }
 
         if (!isActiveLever)
         {
-            Debug.Log("We need more fuel!");
+            FuelLeverChangedNarrative?.Invoke("It's not time for the boost. At least you tried");
         }
         else
         {
