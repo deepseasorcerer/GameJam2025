@@ -11,7 +11,7 @@ public class Item : MonoBehaviour
     public bool isInHands = false;
     public virtual void Use()
     {
-        Debug.Log(itemName + " does nothing");
+        //Debug.Log(itemName + " does nothing");
     
     }
 

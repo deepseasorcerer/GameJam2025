@@ -143,11 +143,11 @@ public class PlayerHands : MonoBehaviour
 
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
-        bool objectStillInView = Physics.Raycast(ray, out hit, pickupRange) && hit.collider.gameObject == currentHoldInteractable.gameObject;
-        bool objectInRange = Vector3.Distance(transform.position, currentHoldInteractable.transform.position) <= pickupRange;
+        bool objectStillInView = Physics.Raycast(ray, out hit, pickupRange+2) && hit.collider.gameObject == currentHoldInteractable.gameObject;
+        //bool objectInRange = Vector3.Distance(transform.position, currentHoldInteractable.transform.position) <= pickupRange;
         bool isKeyStillPressed = Input.GetKey(currentHoldKey);
 
-        if (!objectStillInView || !objectInRange || !isKeyStillPressed)
+        if (!objectStillInView || !isKeyStillPressed)
         {
             Debug.Log("Hold interaction cancelled");
             currentHoldInteractable.CancelInteraction();

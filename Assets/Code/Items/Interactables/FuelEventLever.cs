@@ -25,6 +25,7 @@ public class FuelEventLever : InteractableBase
             isActiveLever = false;
             isEventActive = false;
             fuelThrustersEvent.CompleteTask();
+            FuelLeverChangedNarrative?.Invoke("Well Done!");
             Debug.Log("Activating boost!");
         }
     }
@@ -33,7 +34,6 @@ public class FuelEventLever : InteractableBase
     public void ActivateLever()
     {
         Debug.Log("LeverActivated");
-        FuelLeverChangedNarrative?.Invoke("Well Done!");
         isActiveLever = true;
     }
 

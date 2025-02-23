@@ -52,6 +52,7 @@ public class AirLeakEvent : InteractableBase
 
     public void ActivateTask()
     {
+        Debug.Log("AirLeakActivate");
         airLeakEventChangedNarrative?.Invoke("A breach on the ventilation system is occurring. Grab the avian adhesive to repair. \r\n...\r\nWhat? I'm 87% certain that's how it's pronounced.");
         isActive = true;
         isFixed = false;
