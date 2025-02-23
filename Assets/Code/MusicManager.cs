@@ -16,7 +16,7 @@ public class MusicManager : MonoBehaviour
         Low = 0,
         High = 1,
     }
-
+    
     public MusicIntensity currentIntensity = MusicIntensity.Low;
     [SerializeField] private AudioSource MainMenuMusic;
     [SerializeField] private AudioSource[] GameMusic = new AudioSource[3];
@@ -26,30 +26,30 @@ public class MusicManager : MonoBehaviour
     private double songEndTime;
     private double timeSinceMusicStarted;
     private float fadeTime = 3f;
-
+    
     private float volumnMax = .5f;
 
     private bool inMainGame = false;
-
+    
     private Scene scene;
     void Awake()
-    {
+    { 
         if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
             return;
         }
-
+        
         _instance = this;
-
+        
         SceneManager.sceneLoaded -= OnSceneLoaded;
         SceneManager.sceneLoaded += OnSceneLoaded;
-
+        
         scene = SceneManager.GetActiveScene();
-
+        
         DontDestroyOnLoad(gameObject);
     }
-
+    
     void Start()
     {
 
@@ -62,17 +62,17 @@ public class MusicManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene2, LoadSceneMode mode)
     {
-        if (scene2.name == "MainMenu")
+        if(scene2.name == "MainMenu")
         {
             MainMenuMusic.Play();
             inMainGame = false;
-        }
-        else if (scene2.name == "MainGame")
+        } 
+        else if(scene2.name == "MainGame")
         {
             inMainGame = true;
         }
     }
-
+    
     void Update()
     {
         if ((AudioSettings.dspTime >= songEndTime || !GameMusic[0].isPlaying) && inMainGame)
@@ -83,11 +83,10 @@ public class MusicManager : MonoBehaviour
         }
         timeSinceGameStarted += Time.deltaTime;
     }
-
+    
     public void StartGameMusic()
     {
         MainMenuMusic.Stop();
-<<<<<<< Updated upstream
         Double startTime = AudioSettings.dspTime + 2d;
         timeSinceMusicStarted = 0;
         GameMusic[0].volume = volumnMax;
@@ -115,77 +114,33 @@ public class MusicManager : MonoBehaviour
                 StartCoroutine(FadeOutMusic(GameMusic[0]));
                 StartCoroutine(FadeInMusic(GameMusic[1]));
                 break;
-=======
-
-        for (int i = 0; i < GameMusic.Length; i++)
-        {
-            if (!GameMusic[i].isPlaying)
-            {
-                GameMusic[i].loop = true; 
-                GameMusic[i].Play(); 
-            }
-            GameMusic[i].volume = (i == (int)currentIntensity) ? volumnMax : 0; 
->>>>>>> Stashed changes
         }
     }
-
-    public void SetMusicIntensity(MusicIntensity intensity)
-    {
-        if (currentIntensity == intensity)
-            return;
-
-        currentIntensity = intensity;
-
-        StopAllCoroutines();
-
-        for (int i = 0; i < GameMusic.Length; i++)
-        {
-            if (i == (int)intensity)
-            {
-                StartCoroutine(FadeInMusic(GameMusic[i])); 
-            }
-            else
-            {
-                StartCoroutine(FadeOutMusic(GameMusic[i])); 
-            }
-        }
-    }
-
 
     private IEnumerator FadeOutMusic(AudioSource audioSource)
-    {
+    { 
         float initialVolume = audioSource.volume;
-
-        for (float t = 0; t <= fadeTime; t += Time.deltaTime)
+        for (float t = 0; t <= fadeTime; t += Time.deltaTime) 
         {
-            audioSource.volume = Mathf.Lerp(initialVolume, 0, t / fadeTime);
+            float volume = Mathf.Lerp(initialVolume, 0, t / fadeTime);
+            audioSource.volume = volume;
             yield return null;
         }
-
-        audioSource.volume = 0; 
+    
+        audioSource.volume = 0;
     }
-
-
+    
     private IEnumerator FadeInMusic(AudioSource audioSource)
     {
-        if (!audioSource.isPlaying)
+        float initialVolume = audioSource.volume;
+    
+        for (float t = 0; t <= fadeTime; t += Time.deltaTime) 
         {
-            audioSource.loop = true; 
-            audioSource.Play();
-        }
-
-        audioSource.volume = 0; 
-
-        for (float t = 0; t <= fadeTime; t += Time.deltaTime)
-        {
-            audioSource.volume = Mathf.Lerp(0, volumnMax, t / fadeTime);
+            float volume = Mathf.Lerp(initialVolume, volumnMax, t / fadeTime);
+            audioSource.volume = volume;
             yield return null;
         }
-
-        audioSource.volume = volumnMax; 
+    
+        audioSource.volume = volumnMax;
     }
-
-
 }
-
-
