@@ -51,7 +51,6 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
         if (interactionType == InteractionType.Instant)
         {
             PerformInteraction();
-            Debug.Log(requiredItem);
             playerHands.RemoveItemFromHand(usedItem);
             isInteracting = false;
         }
@@ -82,7 +81,7 @@ public abstract class InteractableBase : MonoBehaviour, IInteractable
     {
         while (isInteracting && interactionTimer < holdTime)
         {
-            Debug.Log(interactionTimer);
+            //Debug.Log(interactionTimer);
             interactionTimer += Time.deltaTime;
             if (radialIndicatorUi != null)
             {
