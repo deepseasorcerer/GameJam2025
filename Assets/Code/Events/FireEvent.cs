@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FireEvent : InteractableBase
 {
@@ -8,7 +9,7 @@ public class FireEvent : InteractableBase
     [SerializeField] private GameEventType eventType = GameEventType.Fire;
     [SerializeField] private List<GameObject> firePoints;
     [SerializeField] private GameObject firePrefab;
-
+    public float timeLeft;
     private List<GameObject> availableFirePoints;
 
     public static event Action<string> FireEventChangedNarrative;
@@ -32,7 +33,22 @@ public class FireEvent : InteractableBase
         {
             ActivateTask();
         }
+        
+        if (isActive)
+        {
+            timeLeft -= Time.deltaTime;
+            if (timeLeft <= 0)
+            {
+                FailedTask();
+            }
+        }
     }
+    public void FailedTask()
+    {
+        isActive = false;
+        SceneManager.LoadScene("DefeatScreen");
+    }
+    
 
 
 

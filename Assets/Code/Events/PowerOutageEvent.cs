@@ -1,6 +1,7 @@
 ﻿
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PowerOutageEvent : InteractableBase
 {
@@ -43,7 +44,7 @@ public class PowerOutageEvent : InteractableBase
     public void FailedTask()
     {
         isActive = false;
-        Debug.Log("Power Outage event failed");
+        SceneManager.LoadScene("DefeatScreen");
     }
 
     public void ActivateTask()

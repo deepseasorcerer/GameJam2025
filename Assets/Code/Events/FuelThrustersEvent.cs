@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class FuelThrustersEvent : InteractableBase
@@ -48,11 +49,10 @@ public class FuelThrustersEvent : InteractableBase
 
     public void FailedTask()
     {
+        Debug.Log("Fuel Event failed");
         isActive = false;
-        Debug.Log("Fuel event failed");
-        //TODO Failed Screen
+        SceneManager.LoadScene("DefeatScreen");
     }
-
     public void CompleteTask()
     {
         isActive = false;
