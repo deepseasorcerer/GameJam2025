@@ -8,6 +8,8 @@ public class MainMenuManager : MonoBehaviour
     public Button settingsButton;
     public AudioSource startSound;
 
+    public GameObject howMenu;
+
     void Start()
     {
         startButton.onClick.AddListener(StartGame);
@@ -35,5 +37,17 @@ public class MainMenuManager : MonoBehaviour
         Debug.Log("Exiting Game...");
         Application.Quit();
     }
+
+    public void OpenHowMenu()
+    {
+        howMenu.SetActive(true);
+    }
+
+    public void CloseHowMenu()
+    {
+        howMenu.SetActive(false);
+    }
+
+
 
 }
