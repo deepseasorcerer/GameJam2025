@@ -33,7 +33,7 @@ public class interactableO2Supply : InteractableBase
     protected override void PerformInteraction()
     {
         o2Sound.Play();
-        O2LeftAmount += 20;
+        O2LeftAmount += 60;
         if (O2LeftAmount > O2MaxCapacity)
             O2LeftAmount = O2MaxCapacity;
 
