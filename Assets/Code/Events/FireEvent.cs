@@ -60,7 +60,7 @@ public class FireEvent : InteractableBase
         } while (selectedFirePoint.transform.childCount > 0);
 
         // Instantiate the firePrefab as a child of the selected fire point
-        GameObject fireInstance = Instantiate(firePrefab, selectedFirePoint.transform.position, Quaternion.identity);
+        GameObject fireInstance = Instantiate(firePrefab, selectedFirePoint.transform.position, selectedFirePoint.transform.rotation);
         fireInstance.transform.SetParent(selectedFirePoint.transform);
         Fire fireScript = fireInstance.GetComponent<Fire>();
         if (fireScript != null)

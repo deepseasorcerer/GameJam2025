@@ -8,11 +8,13 @@ public class Fire : MonoBehaviour
     [SerializeField] private float eventDuration = 50f;
     float timeLeft;
     FireEvent fireEvent;
+    [SerializeField] AudioSource fireSound;
 
     private void Start()
     {
         timeLeft = eventDuration;
         initialScale = transform.localScale; // Get the initial scale of the parent
+        fireSound.Play();
     }
 
     public void SetFireEvent(FireEvent fireEvent)
