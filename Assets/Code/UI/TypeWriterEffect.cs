@@ -18,6 +18,11 @@ public class TypeWriterEffect : MonoBehaviour
         //StartTyping(); // Start effect
     }
 
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
     private void StartTyping()
     {
         typingCoroutine = StartCoroutine(ShowText());
