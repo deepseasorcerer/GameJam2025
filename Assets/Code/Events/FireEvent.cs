@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FireEvent : InteractableBase
@@ -10,7 +11,7 @@ public class FireEvent : InteractableBase
 
     private List<GameObject> availableFirePoints;
 
-    
+    public static event Action<string> FireEventChangedNarrative;
 
     private void Awake()
     {
@@ -20,7 +21,8 @@ public class FireEvent : InteractableBase
 
     public void ActivateTask()
     {
-        Debug.Log("Fire has started");
+        FireEventChangedNarrative?.Invoke("How shall I put this lightly. The ship is on fire. Please put it out. Be precise, I don't want anything damaged.");
+
         ActivateFire();
     }
 
@@ -53,7 +55,7 @@ public class FireEvent : InteractableBase
 
         do
         {
-            randomIndex = Random.Range(0, availableFirePoints.Count);
+            randomIndex = UnityEngine.Random.Range(0, availableFirePoints.Count);
             selectedFirePoint = availableFirePoints[randomIndex];
         } while (selectedFirePoint.transform.childCount > 0);
 
