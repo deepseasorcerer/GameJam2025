@@ -273,12 +273,12 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ef75033600b06894fbea108eb8a457af, type: 3}
-  m_Resource: {fileID: 8300000, guid: ef75033600b06894fbea108eb8a457af, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6d4953b0230b9aa438dfaf3ceaa46d2a, type: 3}
+  m_Resource: {fileID: 8300000, guid: 6d4953b0230b9aa438dfaf3ceaa46d2a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -514,7 +514,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You didn't repair your ship in time...
+  m_text: You kept your ship in one peice!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 983178f6ab6ca4547ac303e310c508de, type: 2}
   m_sharedMaterial: {fileID: 1814688434906501220, guid: 983178f6ab6ca4547ac303e310c508de, type: 2}
@@ -1032,7 +1032,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1300115423066656603, guid: a95dfa4b8556256459d839a444096c3c, type: 3}
       propertyPath: m_text
-      value: retry?
+      value: Play again
       objectReference: {fileID: 0}
     - target: {fileID: 1300115423066656603, guid: a95dfa4b8556256459d839a444096c3c, type: 3}
       propertyPath: m_fontColor.b
@@ -1132,7 +1132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8374823820753061984, guid: a95dfa4b8556256459d839a444096c3c, type: 3}
       propertyPath: m_Name
-      value: RetryButton
+      value: PlayAgainButton
       objectReference: {fileID: 0}
     - target: {fileID: 8524875986057763824, guid: a95dfa4b8556256459d839a444096c3c, type: 3}
       propertyPath: m_Sprite
@@ -1211,7 +1211,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: DEFEAT
+  m_text: victory
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b5d49e428ebd2ef4dbd77f5490c9a4e1, type: 2}
   m_sharedMaterial: {fileID: 2492619028485822325, guid: b5d49e428ebd2ef4dbd77f5490c9a4e1, type: 2}
