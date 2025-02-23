@@ -58,10 +58,16 @@ public class interactableO2Supply : InteractableBase
             {
                 hasTriggeredLowOxygenNarrative = false;
             }
+
+            if (O2LeftAmount <= 0)
+            {
+                SceneManager.LoadScene("DefeatScreen");
+            }
+
             yield return new WaitForSeconds(0.5f);
         }
 
-        if(O2LeftAmount < 0)
+        if(O2LeftAmount <= 0)
         {
             SceneManager.LoadScene("DefeatScreen");
         }
