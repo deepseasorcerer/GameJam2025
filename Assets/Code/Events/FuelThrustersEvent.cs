@@ -32,6 +32,7 @@ public class FuelThrustersEvent : InteractableBase
 
     public void ActivateTask()
     {
+
         FuelChangedNarrative?.Invoke("Ion thruster reserves running low. This menial- I mean Vital, task must be conducted by you. Walk towards the fuel storage. I'll meet you there. \n Virtually, of course. ");
         fuelEventLever.ActivateEvent();
         isActive = true;

@@ -43,6 +43,10 @@ public class NarrativeUI : MonoBehaviour
         interactableO2Supply.OxygenChangedNarrative += ChangeTextDialogueBox;
         FireEvent.FireEventChangedNarrative += ChangeTextDialogueBox;
         FuelThrustersEvent.FuelChangedNarrative += ChangeTextDialogueBox;
+        AirLeakEvent.airLeakEventChangedNarrative += ChangeTextDialogueBox;
+        PipeBreakEvent.pipeBreakEventChangedNarrative += ChangeTextDialogueBox;
+        FuelEventLever.FuelLeverChangedNarrative += ChangeTextDialogueBox;
+        FireExtinguisher.fireExtinguisherCallChangedNarrative += ChangeTextDialogueBox;
     }
 
     private void OnDisable()
@@ -50,6 +54,10 @@ public class NarrativeUI : MonoBehaviour
         interactableO2Supply.OxygenChangedNarrative -= ChangeTextDialogueBox;
         FireEvent.FireEventChangedNarrative -= ChangeTextDialogueBox;
         FuelThrustersEvent.FuelChangedNarrative -= ChangeTextDialogueBox;
+        AirLeakEvent.airLeakEventChangedNarrative -= ChangeTextDialogueBox;
+        PipeBreakEvent.pipeBreakEventChangedNarrative -= ChangeTextDialogueBox;
+        FuelEventLever.FuelLeverChangedNarrative -= ChangeTextDialogueBox;
+        FireExtinguisher.fireExtinguisherCallChangedNarrative -= ChangeTextDialogueBox;
     }
 
     private void Start()
