@@ -188,7 +188,7 @@ MonoBehaviour:
   runSpeed: 10
   jumpForce: 10
   gravity: 6
-  lookSpeed: 400
+  lookSpeed: 1000
   lookXLimit: 90
 --- !u!114 &6783614611224813589
 MonoBehaviour:

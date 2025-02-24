@@ -74,6 +74,7 @@ public class MusicManager : MonoBehaviour
         }
         else if (scene2.name == "VictoryScreen" || scene2.name == "DefeatScreen")
         {
+            inMainGame = false;
             StopGameMusic();
         }
     }

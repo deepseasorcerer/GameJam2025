@@ -71,10 +71,15 @@ public class PlayerController : MonoBehaviour
         #endregion
         
         #region rotation
-        rotationX += -Input.GetAxis("Mouse Y") * lookSpeed * Time.deltaTime;
+        var mouseSense = PlayerPrefs.GetFloat("MouseSensitivity",1f);
+        if (mouseSense < 0.1f)
+        {
+            mouseSense = 0.1f;
+        }
+        rotationX += -Input.GetAxis("Mouse Y") * lookSpeed * Time.deltaTime * mouseSense;
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-        transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed * Time.deltaTime, 0);
+        transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed * Time.deltaTime * mouseSense, 0);
         #endregion
 
         if (_direction.magnitude > 1)
