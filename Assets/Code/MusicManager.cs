@@ -66,10 +66,15 @@ public class MusicManager : MonoBehaviour
         {
             MainMenuMusic.Play();
             inMainGame = false;
+            StopGameMusic();
         }
         else if (scene2.name == "MainGame")
         {
             inMainGame = true;
+        }
+        else if (scene2.name == "VictoryScreen" || scene2.name == "DefeatScreen")
+        {
+            StopGameMusic();
         }
     }
 
@@ -82,6 +87,14 @@ public class MusicManager : MonoBehaviour
             SetMusicIntensity(currentIntensity);
         }
         timeSinceGameStarted += Time.deltaTime;
+    }
+    
+    private void StopGameMusic()
+    {
+        for (int i = 0; i < GameMusic.Length; i++)
+        {
+            GameMusic[i].Stop();
+        }
     }
 
     public void StartGameMusic()

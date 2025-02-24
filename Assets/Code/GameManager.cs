@@ -10,11 +10,11 @@ public class GameManager : MonoBehaviour
     private float timeSinceLastEvent = 30f;
     [SerializeField] private float timeBetweenEvents = 40f;
     [SerializeField] private float timeBetweenEventsRandomness = 10f;
-    [SerializeField] private float minTimeBetweenEvents = 20f; 
+    [SerializeField] private float minTimeBetweenEvents = 25f; 
     [SerializeField] private float eventAcceleration = 4f;
     
-    [SerializeField] private float GameLength = 300f;
-    private float timeElapsed = 0f;
+    [SerializeField] public float GameLength = 300f;
+    [HideInInspector] public float timeElapsed = 0f;
     private float timeSinceCheckedEvents = 0f;
     private MusicManager _musicManager;
 
@@ -29,8 +29,6 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
         gameEventsInteractable = gameEvents.Select(x => x.GetComponent<InteractableBase>()).ToArray();
-        
-
     }
     
     private void Start()

@@ -188,7 +188,7 @@ MonoBehaviour:
   runSpeed: 10
   jumpForce: 10
   gravity: 6
-  lookSpeed: 200
+  lookSpeed: 400
   lookXLimit: 90
 --- !u!114 &6783614611224813589
 MonoBehaviour:
@@ -209,6 +209,7 @@ MonoBehaviour:
   pickupRange: 2
   canUseRightHand: 0
   timeBetweenInteractions: 1
+  isInHand: 0
 --- !u!1 &6758936175868355884
 GameObject:
   m_ObjectHideFlags: 0

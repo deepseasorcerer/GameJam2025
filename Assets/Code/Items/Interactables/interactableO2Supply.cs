@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class interactableO2Supply : InteractableBase
 {
     [SerializeField] const float O2MaxCapacity = 100;
-    [SerializeField] float O2LeftAmount = O2MaxCapacity;
+    [SerializeField] public float O2LeftAmount = O2MaxCapacity;
     [SerializeField] float O2LossSpeedPerHalfSecond = 0.1f;
 
     public static event Action<float> OxygenChanged;
