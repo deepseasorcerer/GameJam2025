@@ -49,7 +49,7 @@ public class PowerOutageEvent : InteractableBase
 
     public void ActivateTask()
     {
-        powerOutageEventChangedNarrative?.Invoke("My ocular receptors are dark vision compatible. This is a human frailty.\r\nThe switch is where you would expect.");
+        powerOutageEventChangedNarrative?.Invoke("My ocular receptors are dark vision compatible. This is a human frailty.\r\nThe switch is where you would expect. (replace battery)");
         _soundManager.PlaySound("PowerOutage");
         fixedBattery.SetActive(false);
         isActive = true;

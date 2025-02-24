@@ -59,6 +59,11 @@ public class GameManager : MonoBehaviour
             }
             StartRandomEvent();
         }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            StartRandomEvent();
+        }
         
         
         timeSinceCheckedEvents += Time.deltaTime;
