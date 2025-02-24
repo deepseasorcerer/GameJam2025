@@ -50,7 +50,7 @@ public class interactableO2Supply : InteractableBase
             OxygenChanged?.Invoke(O2LeftAmount);
             if (O2LeftAmount <= 30 && !hasTriggeredLowOxygenNarrative)
             {
-                OxygenChangedNarrative?.Invoke("The green ones are compressed oxygen. Of course that makes sense. Re-calibrating sensors... Are o2 levels critically low?\r\nJust focus on grabbing the green one. Not orange. That's compressed custard.");
+                OxygenChangedNarrative?.Invoke("Are o2 levels critically low?\r\nJust focus on grabbing the green one. Not orange. That's compressed custard. (bring O2 to the O2 supply)");
                 hasTriggeredLowOxygenNarrative = true;
             }
 

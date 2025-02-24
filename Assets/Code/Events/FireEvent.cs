@@ -21,7 +21,7 @@ public class FireEvent : InteractableBase
 
     public void ActivateTask()
     {
-        FireEventChangedNarrative?.Invoke("How shall I put this lightly. The ship is on fire. Please put it out. Be precise, I don't want anything damaged.");
+        FireEventChangedNarrative?.Invoke("How shall I put this lightly. The ship is on fire. Please put it out. Be precise, I don't want anything damaged. (Put out fire)");
 
         ActivateFire();
     }

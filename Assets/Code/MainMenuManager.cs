@@ -13,7 +13,10 @@ public class MainMenuManager : MonoBehaviour
     void Start()
     {
         startButton.onClick.AddListener(StartGame);
-        settingsButton.onClick.AddListener(OpenSettings);
+        if (settingsButton != null)
+        {
+            settingsButton.onClick.AddListener(OpenSettings);
+        }
     }
 
     // Starts the game with log
